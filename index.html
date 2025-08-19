@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavach Estates - आपके सपनों का घर</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Kavach Estates</h1>
+            <p class="tagline">सुरक्षित और भरोसेमंद प्रॉपर्टी की खोज</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h2>आपका नया घर इंतज़ार कर रहा है</h2>
+                <p>दिल्ली-एनसीआर में प्रीमियम और सत्यापित प्रॉपर्टी खोजें।</p>
+                <button class="cta-button" onclick="scrollToContact()">अधिक जानकारी के लिए संपर्क करें</button>
+            </div>
+        </section>
+
+        <section class="about-us">
+            <div class="container">
+                <h3>हमारे बारे में</h3>
+                <p>कवच एस्टेट्स में, हम आपके लिए सिर्फ घर नहीं, बल्कि एक सुरक्षित भविष्य ढूंढते हैं। 10 वर्षों के अनुभव के साथ, हम आपको सबसे अच्छी प्रॉपर्टी चुनने में मदद करते हैं।</p>
+            </div>
+        </section>
+
+        <section class="contact-form-section" id="contact-form-section">
+            <div class="container">
+                <h3>हमसे संपर्क करें</h3>
+                <form id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="आपका नाम" required>
+                    <input type="email" id="email" name="email" placeholder="आपका ईमेल" required>
+                    <input type="tel" id="phone" name="phone" placeholder="आपका फ़ोन नंबर" required>
+                    <textarea id="message" name="message" placeholder="आपकी आवश्यकता क्या है?" required></textarea>
+                    <button type="submit" class="submit-button">संदेश भेजें</button>
+                </form>
+                <p id="form-message" class="form-message"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kavach Estates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
