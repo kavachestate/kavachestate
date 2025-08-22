@@ -1,25 +1,21 @@
-// Function to scroll to the contact form section
-function scrollToContact() {
-    const contactSection = document.getElementById('contact-form-section');
-    contactSection.scrollIntoView({ behavior: 'smooth' });
-}
+// इस जावास्क्रिप्ट का उद्देश्य यह है कि जब यूजर पेज को नीचे स्क्रॉल करे,
+// तो नेविगेशन बार पर एक क्लास 'scrolled' जुड़ जाए।
+// इस क्लास की मदद से हम CSS में नेविगेशन बार का बैकग्राउंड थोड़ा बदल सकते हैं,
+// ताकि वह कंटेंट के ऊपर ज़्यादा साफ दिखे।
 
-// Handle form submission
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+// सबसे पहले, हम header एलिमेंट को चुनते हैं।
+const header = document.querySelector('.header');
 
-    const formMessage = document.getElementById('form-message');
-    
-    // In a real project, you would send this data to a server.
-    // For this simple landing page, we will just show a success message.
-    
-    // Simulate form submission success
-    formMessage.textContent = 'आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।';
-    formMessage.style.color = '#28a745';
-    
-    // Reset the form after a short delay
-    setTimeout(() => {
-        document.getElementById('contact-form').reset();
-        formMessage.textContent = '';
-    }, 3000);
+// अब, हम window ऑब्जेक्ट पर एक 'scroll' इवेंट लिसनर लगाते हैं।
+// यह फंक्शन हर बार तब चलेगा जब यूजर पेज को स्क्रॉल करेगा।
+window.addEventListener('scroll', () => {
+    // हम चेक करते हैं कि यूजर ने कितना वर्टीकल स्क्रॉल किया है (window.scrollY)।
+    // अगर स्क्रॉल की दूरी 50 पिक्सल से ज़्यादा है, तो...
+    if (window.scrollY > 50) {
+        // ...header एलिमेंट की classList में 'scrolled' क्लास जोड़ दो।
+        header.classList.add('scrolled');
+    } else {
+        // ...अन्यथा (अगर स्क्रॉल 50 पिक्सल से कम है), तो 'scrolled' क्लास हटा दो।
+        header.classList.remove('scrolled');
+    }
 });
