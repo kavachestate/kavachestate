@@ -1,146 +1,956 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kavach Estate - Premium Real Estate</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Kavach Estate | Real Estate & Property in Sonipat</title>
+    <meta name="description" content="Find the best plots, houses, agricultural, residential, commercial, and industrial land in Sonipat with Kavach Estate. Your trusted real estate partner for buying, selling, and leasing property in Sonipat, Haryana.">
+    <meta name="keywords" content="real estate sonipat, property in sonipat, plots in sonipat, house in sonipat, industrial land sonipat, residential land sonipat, commercial land sonipat, agricultural land sonipat, kavach estate, real estate agent sonipat, property dealer sonipat">
 
-    <!-- Google Fonts: Poppins और Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Font Awesome Icons (आइकॉन्स के लिए) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- JSON-LD Structured Data for Google & AI Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Kavach Estate",
+      "url": "https://www.kavachestate.com",
+      "logo": "https://www.kavachestate.com/logo.PNG",
+      "telephone": "+919817357179",
+      "email": "kavachestate@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sonipat",
+        "addressRegion": "HR",
+        "addressCountry": "IN"
+      },
+      "description": "Leading real estate agent in Sonipat, Haryana, specializing in plots, houses, and commercial, residential, agricultural, and industrial land.",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Sonipat"
+      },
+      "image": "https://www.kavachestate.com/logo.PNG",
+      "priceRange": "$$"
+    }
+    </script>
 
-    <!-- एक्सटर्नल CSS फ़ाइल का लिंक -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- CSS Variables and Global Styles (Deeper Dark & Premium Theme) --- */
+        :root {
+            --primary-color: #0D2F4B; /* Dark Blue - Kept for accents */
+            --accent-color: #FFA500; /* Gold */
+            --background-color: #000000; /* Pure Black Background */
+            --surface-color: #0A0A0A; /* Very Dark Grey for Cards/Surfaces */
+            --text-color: #a8b2d1; /* Light Grey/Blue for text */
+            --heading-color: #e6f1ff; /* Lighter Blue/White for headings */
+            --white-color: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* --- Navigation Bar (Liquid Glass Effect) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Glassmorphism styles - updated to black combination */
+            background-color: rgba(10, 10, 10, 0.75); /* Semi-transparent black */
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* For Safari */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            color: var(--white-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            flex-shrink: 0; /* Prevent logo from shrinking */
+        }
+        
+        .nav-logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center the links */
+            flex-grow: 1; /* Allow links to take up space */
+        }
+
+        .nav-links li {
+            margin: 0 1.5rem; /* Adjusted margin for centering */
+        }
+
+        .nav-links a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-social {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-social a {
+            color: var(--white-color);
+            font-size: 1rem; /* Smaller icons for navbar */
+            transition: color 0.3s ease;
+        }
+
+        .nav-social a:hover {
+            color: var(--accent-color);
+        }
+
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes animateStars {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(-2000px);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes shooting-star-animation {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(150vw, -150vh);
+                opacity: 0;
+            }
+        }
+
+        /* --- Starfield Background Effect --- */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: hidden; /* Hide shooting star overflow */
+        }
+
+        .stars-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%; /* Taller to allow for vertical animation */
+            background-repeat: repeat;
+            background-position: 0 0;
+            /* Combined animations: scrolling and blinking */
+            animation-name: animateStars, blink;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            animation-direction: normal, alternate;
+        }
+
+        #stars1 {
+            background-image: radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            animation-duration: 150s, 5s; /* 150s for scroll, 5s for blink */
+        }
+
+        #stars2 {
+            background-image: radial-gradient(1px 1px at 10px 90px, #eee, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 80px 30px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 100px 180px, #ddd, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 190px 60px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 140px 110px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 180px 150px, #ddd, rgba(0,0,0,0));
+            background-size: 250px 250px;
+            animation-duration: 100s, 7s; /* 100s for scroll, 7s for blink */
+        }
+
+        #stars3 {
+            background-image: radial-gradient(1px 1px at 5px 55px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 125px 95px, #eee, rgba(0,0,0,0));
+            background-size: 150px 150px;
+            animation-duration: 200s, 3s; /* Slower scroll, faster blink */
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 50%;
+            left: -100px;
+            height: 2px;
+            background: linear-gradient(-45deg, var(--accent-color), rgba(0, 0, 0, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px var(--accent-color));
+            animation: shooting-star-animation 15s linear infinite;
+        }
+
+        .shooting-star:nth-child(2) {
+            top: 20%;
+            left: -50px;
+            animation-delay: 5s;
+            animation-duration: 12s;
+        }
+
+        /* --- Home/Hero Section --- */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            /* Updated background for parallax effect */
+            background: transparent; /* Made transparent to see stars behind */
+            background-size: cover;
+            background-attachment: fixed; /* This creates the parallax effect */
+            color: var(--white-color);
+            padding: 0 2rem;
+            overflow: hidden; /* Prevents animation overflow */
+        }
+
+        .hero-logo {
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-logo img {
+            height: 240px; /* Further increased size */
+            width: 240px; /* Set width to match height for a circle */
+            border-radius: 50%; /* Make it round */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+            /* New subtle glow effect */
+            box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            color: var(--white-color);
+            margin-bottom: 0.5rem;
+            animation: fadeIn 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        #home .tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        #home .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .cta-buttons {
+            animation: fadeIn 1s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            color: var(--white-color);
+            background-color: var(--accent-color);
+            padding: 0.8rem 1.8rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons a.secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .cta-buttons a.secondary:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- Properties Section (New Amazing Design) --- */
+        #properties {
+            background-color: transparent; /* Make transparent to show stars */
+        }
+
+        .properties-grid {
+            display: grid;
+            gap: 2rem;
+            /* Mobile-first: 1 column */
+            grid-template-columns: 1fr;
+        }
+
+        .property-card {
+            position: relative; /* Crucial for overlay */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 380px; /* Gave cards a fixed height */
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .property-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.6);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left; /* Changed to left for this style */
+            height: 100%;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: var(--white-color);
+            transform: translateY(80px); /* Start lower */
+            transition: transform 0.4s ease;
+        }
+
+        .property-card:hover h3 {
+            transform: translateY(0);
+        }
+
+        .card-content p {
+            flex-grow: 0; /* Don't grow */
+            margin-bottom: 1.5rem;
+            opacity: 0; /* Hidden initially */
+            transform: translateY(60px);
+            transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+        }
+
+        .property-card:hover p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: flex-start; /* Align to left */
+            gap: 1rem;
+            opacity: 0; /* Hidden initially */
+            transform: translateY(60px);
+            transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        }
+
+        .property-card:hover .card-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-buttons a {
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .card-buttons .btn-call {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        .card-buttons .btn-call:hover {
+            background-color: #1a4a75;
+        }
+
+        .card-buttons .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white-color);
+        }
+        .card-buttons .btn-whatsapp:hover {
+            background-color: #1ebe5a;
+        }
+
+        /* --- About Us Section (Improved Design) --- */
+        #about {
+             background-color: rgba(17, 34, 64, 0.6); /* Consistent glass effect */
+             -webkit-backdrop-filter: blur(8px);
+             backdrop-filter: blur(8px);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+             border-radius: 15px;
+             margin: 4rem 2rem; /* Add vertical and horizontal margin */
+             padding: 4rem;
+             position: relative;
+             z-index: 1;
+        }
+
+        #about h2 {
+            margin-top: 0;
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Image column, Text column */
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Footer / Contact Section (Improved Design) --- */
+        #contact {
+            background-color: rgba(10, 10, 10, 0.75); /* Frosted Glass background */
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            color: var(--heading-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-column .contact-info p {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column .social-icons a {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        
+        .footer-column .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+
+        /* Tablet (768px and up) */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 4.5rem;
+            }
+            .properties-grid {
+                /* 2 columns for tablets */
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop (1025px and up) */
+        @media (min-width: 1025px) {
+            .properties-grid {
+                /* 3 columns for desktops */
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Mobile menu adjustments */
+        @media (max-width: 767px) {
+             .navbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                order: 3; /* Links appear last */
+            }
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            .nav-social {
+                display: none; /* Hide social icons in navbar on mobile to reduce clutter */
+            }
+            #home h1 {
+                font-size: 2.8rem;
+            }
+            #home .tagline {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 3rem 1rem;
+            }
+            #about {
+                margin: 0 1rem; /* Adjust margin for smaller screens */
+                padding: 3rem 1.5rem; /* Adjust padding */
+            }
+            .about-content {
+                grid-template-columns: 1fr; /* Stack columns */
+                gap: 2rem;
+            }
+            .about-text {
+                text-align: center;
+            }
+            .about-text p {
+                text-align: center;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                text-align: center;
+            }
+            .footer-column h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* --- Floating Action Buttons --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1010;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .float-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: var(--white-color);
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .float-btn i {
+            font-size: 2rem;
+        }
+
+        .whatsapp-float {
+            background-color: #25D366;
+        }
+
+        .call-float {
+            background-color: #1a1a1a; /* Changed from blue to dark grey/black */
+            border: 1px solid var(--accent-color);
+        }
+
+    </style>
 </head>
 <body>
 
-    <!-- ========================= HEADER और NAVIGATION BAR ========================= -->
-    <header class="header">
-        <nav class="navbar">
-            <a href="#" class="nav-logo">Kavach Estate</a>
-            <div class="nav-buttons">
-                <a href="tel:+919817357179" class="btn">
-                    <i class="fas fa-phone"></i> Call Us
-                </a>
-                <a href="https://wa.me/919817357179" target="_blank" class="btn">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-        </nav>
-    </header>
+    <!-- Starfield Background -->
+    <div class="stars">
+        <div class="stars-bg" id="stars1"></div>
+        <div class="stars-bg" id="stars2"></div>
+        <div class="stars-bg" id="stars3"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+
+    <!-- 1. Sticky Navigation Bar -->
+    <nav class="navbar">
+        <a href="#home" class="nav-logo">Kavach<span>Estate</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </nav>
 
     <main>
-        <!-- ========================= LOGO SECTION ========================= -->
-        <section class="logo-section">
-            <div class="logo-container">
-                <!-- यहाँ अपनी कंपनी का लोगो लगाएँ -->
-                <img src="https://placehold.co/400x200/FFFFFF/6a11cb?text=Kavach+Estate+Logo" alt="Kavach Estate Logo" class="main-logo">
+        <!-- 2. Header / Home Section -->
+        <section id="home">
+            <div class="hero-logo">
+                <img src="logo.PNG" alt="Kavach Estate Logo">
+            </div>
+            <p class="tagline">Your Trusted Partner in Property</p>
+            <p class="description">We offer properties starting from 50 Gaj plots to multi-acre industrial leases.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919817357179" target="_blank" rel="noopener" class="primary">WhatsApp Now</a>
+                <a href="tel:+919817357179" class="secondary">Call Now</a>
             </div>
         </section>
 
-        <!-- ========================= PROPERTIES SECTION ========================= -->
-        <section class="properties-section">
-            <h1 class="section-title">Properties We Offer</h1>
-            <div class="properties-grid">
+        <!-- 3. Properties Section -->
+        <section id="properties">
+            <div class="container">
+                <h2>Our Property Offerings</h2>
+                <div class="properties-grid">
+                    <!-- Card 1 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=380&fit=crop" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors</h3>
+                            <p>Available: Plots, Houses, Flats</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop" alt="Agricultural land for sale in Sonipat">
+                        <div class="card-content">
+                            <h3>Agricultural Land</h3>
+                            <p>Farms, Orchards, Open Land</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" rel="noopener" class="btn-whatsapp">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1572004318732-8026d8b53930?w=400&h=380&fit=crop" alt="Residential land and villas in Sonipat">
+                        <div class="card-content">
+                            <h3>Residential Land</h3>
+                            <p>Plots for Houses & Villas</p>
+                            <div class="card-buttons"> 
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1600880292203-942bb68b2433?w=400&h=380&fit=crop" alt="Commercial land and office spaces in Sonipat">
+                        <div class="card-content">
+                            <h3>Commercial Land</h3>
+                            <p>Shops, Showrooms, Office Spaces</p>
+                            <div class="card-buttons"> 
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1565610214429-439a7a320384?w=400&h=380&fit=crop" alt="Industrial land and warehouses for lease in Sonipat">
+                        <div class="card-content">
+                            <h3>Industrial Land</h3>
+                            <p>Factories, Warehouses, Leases</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1588993462253-536a6a23b3ce?w=400&h=380&fit=crop" alt="Apartments and builder floors in Sonipat city society">
+                        <div class="card-content">
+                            <h3>City Society</h3>
+                            <p>Apartments, Builder Floors</p>
+                            <div class="card-buttons"> 
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 7 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1533973861412-54d2633a3177?w=400&h=380&fit=crop" alt="Individual plots for investment in Sonipat">
+                        <div class="card-content">
+                            <h3>Individual Plots</h3>
+                            <p>All sizes available for investment</p>
+                            <div class="card-buttons"> 
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 8 -->
+                    <div class="property-card">
+                        <img src="URL_TO_YOUR_IMAGE" alt="Description of the property">
+                        <div class="card-content">
+                            <h3>Property Title</h3>
+                            <p>Brief description of the property</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- कार्ड 1: Agricultural -->
-                <div class="property-card">
-                    <h2>Agricultural</h2>
-                    <p>Land & Plots</p>
-                    <div class="card-buttons">
-                        <a href="tel:+919817357179" class="btn card-btn">
-                            <i class="fas fa-phone"></i> Call Us
-                        </a>
-                        <a href="https://wa.me/919817357179" target="_blank" class="btn card-btn">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. About Us Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Kavach Estate</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&fit=crop" alt="Kavach Estate - Professional Real Estate Agents in Sonipat">
+                    </div>
+                    <div class="about-text">
+                        <h3>Your Premier Real Estate Partner in Sonipat</h3>
+                        <p>At Kavach Estate, we are dedicated to making your property dreams a reality in Sonipat, Haryana. With years of experience in the local real estate market, we specialize in a diverse range of properties including residential plots, commercial spaces, industrial lands, and agricultural farms.</p>
+                        <p>Our mission is to provide transparent, reliable, and client-focused services. Whether you are looking to buy your first home, invest in a high-yield plot, or lease a large industrial area, our expert team is here to guide you through every step of the process in the Sonipat region.</p>
                     </div>
                 </div>
-
-                <!-- कार्ड 2: Residential -->
-                <div class="property-card">
-                    <h2>Residential</h2>
-                    <p>Land & Plots</p>
-                    <div class="card-buttons">
-                        <a href="tel:+919817357179" class="btn card-btn">
-                            <i class="fas fa-phone"></i> Call Us
-                        </a>
-                        <a href="https://wa.me/919817357179" target="_blank" class="btn card-btn">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- कार्ड 3: Commercial -->
-                <div class="property-card">
-                    <h2>Commercial</h2>
-                    <p>Land & Plots</p>
-                    <div class="card-buttons">
-                        <a href="tel:+919817357179" class="btn card-btn">
-                            <i class="fas fa-phone"></i> Call Us
-                        </a>
-                        <a href="https://wa.me/919817357179" target="_blank" class="btn card-btn">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- कार्ड 4: Industrial -->
-                <div class="property-card">
-                    <h2>Industrial</h2>
-                    <p>Land & Plots</p>
-                    <div class="card-buttons">
-                        <a href="tel:+919817357179" class="btn card-btn">
-                            <i class="fas fa-phone"></i> Call Us
-                        </a>
-                        <a href="https://wa.me/919817357179" target="_blank" class="btn card-btn">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </section>
     </main>
 
-    <!-- ========================= FOOTER SECTION ========================= -->
-    <footer class="footer">
-        <div class="social-media">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Threads"><i class="fab fa-threads"></i></a>
-            <a href="#" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
-            <a href="https://wa.me/919817357179" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-        <div class="contact-info">
-            <p>
-                <i class="fas fa-map-marker-alt"></i>
-                <a href="https://www.google.com/maps/search/?api=1&query=Garh+Mirakpur,+Sonipat,+Haryana+131023" target="_blank">
-                    Garh Mirakpur, Sonipat, Haryana 131023
-                </a>
-            </p>
-            <p>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:kavachestate@gmail.com">kavachestate@gmail.com</a>
-            </p>
-            <p>
-                <i class="fas fa-phone"></i>
-                <a href="tel:+919817357179">9817357179</a>
-            </p>
-        </div>
-        <div class="copyright">
-            <p>© 2025 Kavach Estate. All Rights Reserved.</p>
+    <!-- 5. Footer / Contact Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1: About -->
+                <div class="footer-column">
+                    <h4>Kavach<span>Estate</span></h4>
+                    <p>Your trusted partner in finding the perfect property. We specialize in a wide range of real estate services.</p>
+                </div>
+                <!-- Column 2: Quick Links -->
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#properties">Properties</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="https://www.kavachestate.com" target="_blank" rel="noopener">Main Website</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Contact Info -->
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Sonipat, Haryana</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:kavachestate@gmail.com">kavachestate@gmail.com</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+919817357179">+91 9817357179</a></p>
+                    </div>
+                </div>
+                <!-- Column 4: Social Media -->
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                        <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Kavach Estate. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
-    <!-- एक्सटर्नल JavaScript फ़ाइल का लिंक -->
-    <script src="script.js"></script>
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919817357179" class="float-btn whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919817357179" class="float-btn call-float" aria-label="Call">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
 </body>
 </html>
