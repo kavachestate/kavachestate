@@ -445,7 +445,7 @@
             cursor: pointer;
             font-size: 1rem;
             transition: all 0.3s ease;
-            display: inline-block; /* --- CHANGED: Now visible by default --- */
+            display: inline-block; 
         }
 
         .scroll-btn:hover:not(:disabled) {
@@ -457,9 +457,6 @@
             opacity: 0.2;
             cursor: not-allowed;
         }
-        
-        /* --- REMOVED: Deleted the .has-overflow rule --- */
-       
 
         .property-scroll-container {
             display: flex;
@@ -755,6 +752,7 @@
         }
 
 
+        /* --- MOBILE STYLES (All fixes are below) --- */
         @media (max-width: 767px) {
             .navbar {
                 flex-wrap: wrap;  
@@ -816,17 +814,32 @@
             #home .tagline {
                 font-size: 1.2rem;
             }
-            section {
-                padding: 3rem 0; 
+            
+            /* --- TASK 1 FIX (PART 1): Remove fixed vh height from home --- */
+            #home {
+                height: auto; 
+                padding: 4rem 1rem 1.5rem 1rem; /* CHANGED: Was 3rem bottom, now 1.5rem */
             }
+
+            section {
+                padding: 2.5rem 0; 
+            }
+            
+            /* --- TASK 1 FIX (PART 2): Add specific override for properties section padding --- */
+            #properties {
+                padding-top: 1rem; /* CHANGED: Was 1.5rem, now 1rem */
+            }
+
             #about {
                 margin: 0 1rem; 
                 padding: 3rem 1.5rem;  
             }
            
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem; 
+                margin-bottom: 2.5rem; 
             }
+
             .footer-content {
                 text-align: center;
             }
@@ -835,13 +848,17 @@
                 transform: translateX(-50%);
             }
             
-            /* --- Responsive styles for Netflix Rows --- */
             .scroll-arrows {
-                display: none; /* --- IMPORTANT: Still hidden on mobile (rely on swipe) --- */
+                display: none; 
             }
 
             .category-header {
                 padding: 0 1rem; 
+                margin-bottom: 1rem; 
+            }
+            
+            .category-title {
+                font-size: 1.5rem; 
             }
 
             .property-scroll-container {
@@ -850,6 +867,15 @@
             }
             .property-card {
                 flex-basis: 280px; 
+            }
+            
+            .card-content h3 {
+                font-size: 1.25rem; 
+            }
+            
+            .card-content p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem; 
             }
         }
 
@@ -1023,8 +1049,7 @@
                         <img src="/IMG_3487.JPG" alt="Residential plots and houses in Sonipat Sectors">
                         <div class="card-content">
                             <h3>Sonipat Sectors 18</h3>
-                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
-                            <div class="card-buttons">
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>                            <div class="card-buttons">
                                 <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
                                 <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
                             </div>
@@ -1284,23 +1309,15 @@
 
                 if (!container || !prevBtn || !nextBtn) return; 
 
-                // Function to check scroll state and update buttons
                 function updateScrollButtons() {
                     const scrollLeft = container.scrollLeft;
                     const scrollWidth = container.scrollWidth;
                     const clientWidth = container.clientWidth;
 
-                    // --- LOGIC CHANGE: These 2 lines are REMOVED to keep buttons visible ---
-                    // const hasOverflow = scrollWidth > clientWidth;
-                    // wrapper.classList.toggle('has-overflow', hasOverflow);
-                    // --- END OF CHANGE ---
-
-                    // Disable/enable buttons (This logic now works perfectly even if there is no overflow)
                     prevBtn.disabled = scrollLeft <= 0;
                     nextBtn.disabled = (scrollLeft + clientWidth) >= (scrollWidth - 5);
                 }
 
-                // Add button click events
                 nextBtn.addEventListener('click', () => {
                     const scrollAmount = clientWidth * 0.8; 
                     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
@@ -1311,13 +1328,8 @@
                     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 });
 
-                // Update buttons when the user scrolls manually (e.g., swipe)
                 container.addEventListener('scroll', updateScrollButtons);
-
-                // Update buttons on load and on window resize
                 new ResizeObserver(updateScrollButtons).observe(container);
-                
-                // Initial check on load
                 updateScrollButtons();
             });
 
