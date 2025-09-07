@@ -53,14 +53,68 @@
     <style>
       /* --- CSS Variables and Global Styles --- */
       :root {
+        /* DARK MODE (DEFAULT) */
         --primary-color: #0d2f4b;
         --accent-color: #ffa500;
         --background-color: #000000;
         --surface-color: #0a0a0a;
         --text-color: #a8b2d1;
         --heading-color: #e6f1ff;
-        --white-color: #ffffff;
+        --white-color: #ffffff; /* Used for pure white text/icons on dark bg */
         --navbar-height: 50px;
+
+        --navbar-bg: rgba(10, 10, 10, 0.75);
+        --mobile-menu-bg: rgba(10, 10, 10, 0.95);
+        --footer-bg: rgba(10, 10, 10, 0.75);
+        --about-bg: rgba(17, 34, 64, 0.6);
+        --border-color: rgba(255, 255, 255, 0.1);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        --card-gradient: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.95) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        --heading-gradient: linear-gradient(
+          120deg,
+          var(--heading-color),
+          var(--white-color)
+        );
+        --scroll-btn-bg: rgba(255, 255, 255, 0.1);
+      }
+
+      body[data-theme="light"] {
+        /* LIGHT MODE OVERRIDES */
+        --background-color: #ffffff;
+        --surface-color: #f4f4f4;
+        --text-color: #555555;
+        --heading-color: #0d2f4b; /* Use primary color for headings */
+        --white-color: #111111; /* This var is used for text in navbar, must be dark */
+
+        --navbar-bg: rgba(255, 255, 255, 0.75);
+        --mobile-menu-bg: rgba(255, 255, 255, 0.95);
+        --footer-bg: #f9f9f9;
+        --about-bg: #f0f4f8; /* A light blueish gray */
+        --border-color: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        --card-gradient: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        --heading-gradient: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        --scroll-btn-bg: rgba(0, 0, 0, 0.05);
+      }
+
+      /* Hide starfield in light mode */
+      body[data-theme="light"] .stars,
+      body[data-theme="light"] .shooting-star {
+        display: none;
       }
 
       html {
@@ -74,6 +128,7 @@
         background-color: var(--background-color);
         color: var(--text-color);
         line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
 
       * {
@@ -89,6 +144,7 @@
       h3 {
         color: var(--heading-color);
         font-weight: 700;
+        transition: color 0.3s ease;
       }
 
       h2 {
@@ -96,11 +152,7 @@
         font-size: 2.5rem;
         margin-bottom: 3rem;
         padding: 0 1rem;
-        background: linear-gradient(
-          120deg,
-          var(--heading-color),
-          var(--white-color)
-        );
+        background: var(--heading-gradient);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -117,16 +169,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: rgba(10, 10, 10, 0.75);
+        background-color: var(--navbar-bg);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--border-color);
         padding: 0.8rem 2rem;
         position: sticky;
         top: 0;
         width: 100%;
         z-index: 1000;
         min-height: var(--navbar-height);
+        transition: background-color 0.3s ease, border-bottom 0.3s ease;
       }
 
       .nav-logo {
@@ -192,6 +245,37 @@
       .nav-social a:hover {
         color: var(--accent-color);
         transform: translateY(-3px);
+      }
+
+      /* --- Theme Toggle Button Styles --- */
+      .theme-toggle-btn {
+        background: none;
+        border: none;
+        color: var(--white-color);
+        font-size: 1rem; /* Matches social icons */
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+        line-height: 1; /* Aligns icon vertically */
+      }
+
+      .theme-toggle-btn:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px); /* Matches social icon hover */
+      }
+
+      /* Wrapper for mobile controls (toggle + hamburger) */
+      .mobile-controls {
+        display: none; /* Hidden on desktop */
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .mobile-controls .theme-toggle-btn {
+        font-size: 1.2rem; /* Slightly larger for mobile tap */
+      }
+      .mobile-controls .theme-toggle-btn:hover {
+        transform: none; /* Disable transform on mobile */
       }
 
       #nav-toggle {
@@ -375,11 +459,19 @@
 
       #home h1 {
         font-size: 3.5rem;
-        color: var(--white-color);
+        color: var(--white-color); /* This gets overridden by h1 rule (heading-color) but is used by data-theme */
         margin-bottom: 0.5rem;
         animation: fadeIn 1s ease-out 0.2s forwards;
         opacity: 0;
       }
+      /* Fix for light mode home h1 */
+      body[data-theme="light"] #home h1 {
+        color: var(--heading-color);
+      }
+      body[data-theme="dark"] #home h1 {
+        color: #ffffff; /* Override heading color for dark mode hero */
+      }
+
 
       #home .tagline {
         font-size: 1.5rem;
@@ -409,15 +501,20 @@
 
       .cta-buttons a {
         text-decoration: none;
-        color: var(--white-color);
+        color: var(--white-color); /* This should be pure white/black */
         background-color: var(--accent-color);
         padding: 0.8rem 1.8rem;
         margin: 0;
         border-radius: 5px;
         font-weight: 600;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
       }
+      /* Fix CTA button text color */
+      body[data-theme="dark"] .cta-buttons a { color: #ffffff; }
+      body[data-theme="light"] .cta-buttons a { color: #ffffff; }
+      body[data-theme="light"] .cta-buttons a.secondary { color: var(--accent-color); }
+      body[data-theme="light"] .cta-buttons a.secondary:hover { color: #ffffff; }
+
 
       .cta-buttons a:hover {
         background-color: #e69500;
@@ -427,6 +524,7 @@
       .cta-buttons a.secondary {
         background-color: transparent;
         border: 2px solid var(--accent-color);
+        color: var(--white-color); /* Should be pure white on dark, accent on light */
       }
 
       .cta-buttons a.secondary:hover {
@@ -469,9 +567,9 @@
       }
 
       .scroll-btn {
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: var(--white-color);
+        background-color: var(--scroll-btn-bg);
+        border: 1px solid var(--border-color);
+        color: var(--white-color); /* Becomes dark in light mode, correct */
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -484,11 +582,15 @@
       .scroll-btn:hover:not(:disabled) {
         background-color: var(--accent-color);
         border-color: var(--accent-color);
+        color: #ffffff; /* Always white text on accent hover */
       }
 
       .scroll-btn:disabled {
         opacity: 0.2;
         cursor: not-allowed;
+      }
+      body[data-theme="light"] .scroll-btn:disabled {
+         opacity: 0.4;
       }
 
       .property-scroll-container {
@@ -514,16 +616,16 @@
         position: relative;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--card-shadow);
+        transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.3s ease;
+        border: 1px solid var(--border-color);
         flex: 0 0 320px;
         height: 380px;
       }
 
       .property-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        box-shadow: var(--card-hover-shadow);
       }
 
       .property-card img {
@@ -544,11 +646,7 @@
         left: 0;
         width: 100%;
         padding: 1.5rem;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.95) 0%,
-          rgba(0, 0, 0, 0) 100%
-        );
+        background: var(--card-gradient);
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -560,13 +658,14 @@
       .card-content h3 {
         margin-top: 0;
         font-size: 1.6rem;
-        color: var(--white-color);
+        color: #ffffff; /* Always white on dark gradient */
       }
 
       .card-content p {
         flex-grow: 0;
         margin-bottom: 1.5rem;
         opacity: 1;
+        color: #f0f0f0; /* Always light on dark gradient */
       }
 
       .card-buttons {
@@ -584,11 +683,16 @@
         font-weight: 600;
         transition: background-color 0.3s ease;
         text-align: center;
+        color: var(--white-color); /* Always light text */
+      }
+      /* Force card button text to white always */
+      .card-buttons a {
+        color: #ffffff;
       }
 
       .card-buttons .btn-call {
         background-color: var(--primary-color);
-        color: var(--white-color);
+        color: #ffffff;
       }
       .card-buttons .btn-call:hover {
         background-color: #1a4a75;
@@ -596,7 +700,7 @@
 
       .card-buttons .btn-whatsapp {
         background-color: #25d366;
-        color: var(--white-color);
+        color: #ffffff;
       }
       .card-buttons .btn-whatsapp:hover {
         background-color: #1ebe5a;
@@ -604,15 +708,16 @@
 
       /* --- About Us Section --- */
       #about {
-        background-color: rgba(17, 34, 64, 0.6);
+        background-color: var(--about-bg);
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         border-radius: 15px;
         margin: 4rem 2rem;
         padding: 4rem;
         position: relative;
         z-index: 1;
+        transition: background-color 0.3s ease, border 0.3s ease;
       }
 
       #about h2 {
@@ -632,6 +737,9 @@
         width: 100%;
         border-radius: 10px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      }
+      body[data-theme="light"] .about-image img {
+        box-shadow: var(--card-shadow);
       }
 
       .about-text h3 {
@@ -675,18 +783,20 @@
         color: var(--heading-color);
         display: block;
         margin-bottom: 0.25rem;
+        transition: color 0.3s ease;
       }
 
       /* --- Footer / Contact Section --- */
       #contact {
-        background-color: rgba(10, 10, 10, 0.75);
+        background-color: var(--footer-bg);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         color: var(--text-color);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid var(--border-color);
         position: relative;
         z-index: 1;
         padding: 4rem 2rem 2rem 2rem;
+        transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
       }
 
       .footer-content {
@@ -757,8 +867,9 @@
         text-align: center;
         margin-top: 2rem;
         padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid var(--border-color);
         font-size: 0.9rem;
+        transition: border 0.3s ease;
       }
 
       /* --- Responsive Design --- */
@@ -795,22 +906,33 @@
         }
 
         .nav-toggle-label {
-          display: block;
+          display: block; /* Show hamburger label */
         }
+
+        .mobile-controls {
+          display: flex; /* Show mobile controls wrapper */
+        }
+        
+        /* Hide the desktop theme toggle (inside the menu) */
+        .nav-menu .theme-toggle-btn {
+            display: none;
+        }
+
 
         .nav-menu {
           display: none;
           flex-direction: column;
           width: 100%;
-          background-color: rgba(10, 10, 10, 0.95);
+          background-color: var(--mobile-menu-bg);
           -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
           position: absolute;
           top: 100%;
           left: 0;
           padding: 1rem 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-top: 1px solid var(--border-color);
           order: 3;
+          transition: background-color 0.3s ease, border 0.3s ease;
         }
 
         #nav-toggle:checked ~ .nav-menu {
@@ -838,10 +960,11 @@
           justify-content: center;
           margin-top: 1.5rem;
           padding-top: 1.5rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-top: 1px solid var(--border-color);
           width: 90%;
           margin-left: auto;
           margin-right: auto;
+          transition: border 0.3s ease;
         }
 
         #home h1 {
@@ -926,10 +1049,17 @@
     <nav class="navbar">
       <a href="#home" class="nav-logo">Kavach<span>Estate</span></a>
 
+      <div class="mobile-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle light/dark mode">
+          <i class="fas fa-sun icon-sun"></i>
+          <i class="fas fa-moon icon-moon" style="display: none"></i>
+        </button>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <i class="fas fa-bars"></i>
+        </label>
+      </div>
+
       <input type="checkbox" id="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label">
-        <i class="fas fa-bars"></i>
-      </label>
 
       <div class="nav-menu">
         <ul class="nav-links">
@@ -939,6 +1069,11 @@
           <li><a href="#contact">Contact Us</a></li>
         </ul>
         <div class="nav-social">
+          <button class="theme-toggle-btn" aria-label="Toggle light/dark mode">
+            <i class="fas fa-sun icon-sun"></i>
+            <i class="fas fa-moon icon-moon" style="display: none"></i>
+          </button>
+
           <a
             href="https://www.facebook.com/kavachestate"
             target="_blank"
@@ -999,7 +1134,7 @@
             alt="Kavach Estate Logo"
           />
         </div>
-
+        <h1>Kavach Estate</h1>
         <p class="tagline">Your Trusted Partner in Property</p>
         <p class="description">
           We offer properties starting from 50 Gaj plots to multi-acre
@@ -1845,27 +1980,29 @@
           if (!container || !prevBtn || !nextBtn) return;
 
           function updateScrollButtons() {
+            if (!container || !prevBtn || !nextBtn) return; // Add robust check
             const scrollLeft = container.scrollLeft;
             const scrollWidth = container.scrollWidth;
             const clientWidth = container.clientWidth;
 
             prevBtn.disabled = scrollLeft <= 0;
+            // Add a small buffer (5px) for scroll precision issues
             nextBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 5;
           }
 
           nextBtn.addEventListener("click", () => {
-            const scrollAmount = clientWidth * 0.8;
+            const scrollAmount = container.clientWidth * 0.8;
             container.scrollBy({ left: scrollAmount, behavior: "smooth" });
           });
 
           prevBtn.addEventListener("click", () => {
-            const scrollAmount = clientWidth * 0.8;
+            const scrollAmount = container.clientWidth * 0.8;
             container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
           });
 
-          container.addEventListener("scroll", updateScrollButtons);
+          container.addEventListener("scroll", updateScrollButtons, { passive: true });
           new ResizeObserver(updateScrollButtons).observe(container);
-          updateScrollButtons();
+          updateScrollButtons(); // Initial check
         });
 
         // --- SCRIPT 2: Fade-in Sections on Scroll ---
@@ -1889,6 +2026,47 @@
         sections.forEach((section) => {
           observer.observe(section);
         });
+
+        // --- SCRIPT 3: Dark/Light Mode Toggle ---
+        const allToggleBtns = document.querySelectorAll(".theme-toggle-btn");
+        const body = document.body;
+        const sunIcons = document.querySelectorAll(".icon-sun");
+        const moonIcons = document.querySelectorAll(".icon-moon");
+
+        function applyTheme(theme) {
+          body.dataset.theme = theme;
+          localStorage.setItem("kavachEstateTheme", theme);
+
+          if (theme === "light") {
+            sunIcons.forEach((i) => (i.style.display = "none"));
+            moonIcons.forEach((i) => (i.style.display = "inline-block"));
+          } else {
+            sunIcons.forEach((i) => (i.style.display = "inline-block"));
+            moonIcons.forEach((i) => (i.style.display = "none"));
+          }
+        }
+
+        allToggleBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            let currentTheme = body.dataset.theme;
+            // If theme is not set or is 'dark', switch to 'light'
+            if (!currentTheme || currentTheme === "dark") {
+              applyTheme("light");
+            } else {
+              applyTheme("dark");
+            }
+          });
+        });
+
+        // On Load: Apply saved theme or default to dark (which is the CSS default)
+        const savedTheme = localStorage.getItem("kavachEstateTheme");
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          // Default is dark (from CSS), so just ensure icons and attribute are correct
+          applyTheme("dark");
+          body.dataset.theme = "dark"; // Explicitly set attribute for logic
+        }
       });
     </script>
   </body>
