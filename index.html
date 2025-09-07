@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Meta Tags -->
     <title>Kavach Estate | Real Estate & Property in Sonipat</title>
     <meta name="description" content="Find the best plots, houses, agricultural, residential, commercial, and industrial land in Sonipat with Kavach Estate. Your trusted real estate partner for buying, selling, and leasing property in Sonipat, Haryana.">
     <meta name="keywords" content="real estate sonipat, property in sonipat, plots in sonipat, house in sonipat, industrial land sonipat, residential land sonipat, commercial land sonipat, agricultural land sonipat, kavach estate, real estate agent sonipat, property dealer sonipat">
@@ -14,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- JSON-LD Structured Data for Google & AI Search -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -41,14 +39,14 @@
     </script>
 
     <style>
-        /* --- CSS Variables and Global Styles (Deeper Dark & Premium Theme) --- */
+        /* --- CSS Variables and Global Styles --- */
         :root {
-            --primary-color: #0D2F4B; /* Dark Blue - Kept for accents */
-            --accent-color: #FFA500; /* Gold */
-            --background-color: #000000; /* Pure Black Background */
-            --surface-color: #0A0A0A; /* Very Dark Grey for Cards/Surfaces */
-            --text-color: #a8b2d1; /* Light Grey/Blue for text */
-            --heading-color: #e6f1ff; /* Lighter Blue/White for headings */
+            --primary-color: #0D2F4B; 
+            --accent-color: #FFA500; 
+            --background-color: #000000; 
+            --surface-color: #0A0A0A; 
+            --text-color: #a8b2d1; 
+            --heading-color: #e6f1ff; 
             --white-color: #FFFFFF;
         }
 
@@ -81,7 +79,7 @@
         h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .container {
@@ -90,17 +88,15 @@
             padding: 0 1rem;
         }
 
-        /* --- Navigation Bar (Liquid Glass Effect) --- */
+        /* --- Navigation Bar --- */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Glassmorphism styles - updated to black combination */
-            background-color: rgba(10, 10, 10, 0.75); /* Semi-transparent black */
+            background-color: rgba(10, 10, 10, 0.75); 
             -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px); /* For Safari */
+            backdrop-filter: blur(10px); 
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
             padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
@@ -113,11 +109,17 @@
             font-weight: 700;
             font-size: 1.5rem;
             text-decoration: none;
-            flex-shrink: 0; /* Prevent logo from shrinking */
+            flex-shrink: 0; 
         }
         
         .nav-logo span {
             color: var(--accent-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            flex-grow: 1; 
         }
 
         .nav-links {
@@ -125,12 +127,12 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; /* Center the links */
-            flex-grow: 1; /* Allow links to take up space */
+            justify-content: center; 
+            flex-grow: 1; 
         }
 
         .nav-links li {
-            margin: 0 1.5rem; /* Adjusted margin for centering */
+            margin: 0 1.5rem; 
         }
 
         .nav-links a {
@@ -148,16 +150,29 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            margin-left: 1.5rem; 
         }
 
         .nav-social a {
             color: var(--white-color);
-            font-size: 1rem; /* Smaller icons for navbar */
+            font-size: 1rem; 
             transition: color 0.3s ease;
         }
 
         .nav-social a:hover {
             color: var(--accent-color);
+        }
+
+        #nav-toggle {
+            display: none; 
+        }
+
+        .nav-toggle-label {
+            display: none; 
+            font-size: 1.5rem;
+            color: var(--white-color);
+            cursor: pointer;
+            z-index: 1001;
         }
 
 
@@ -210,7 +225,7 @@
             width: 100%;
             height: 100%;
             z-index: -10;
-            overflow: hidden; /* Hide shooting star overflow */
+            overflow: hidden; 
         }
 
         .stars-bg {
@@ -218,10 +233,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 200%; /* Taller to allow for vertical animation */
+            height: 200%; 
             background-repeat: repeat;
             background-position: 0 0;
-            /* Combined animations: scrolling and blinking */
             animation-name: animateStars, blink;
             animation-timing-function: linear, ease-in-out;
             animation-iteration-count: infinite, infinite;
@@ -236,7 +250,7 @@
                               radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
                               radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
             background-size: 200px 200px;
-            animation-duration: 150s, 5s; /* 150s for scroll, 5s for blink */
+            animation-duration: 150s, 5s; 
         }
 
         #stars2 {
@@ -247,14 +261,14 @@
                               radial-gradient(1px 1px at 140px 110px, #fff, rgba(0,0,0,0)),
                               radial-gradient(2px 2px at 180px 150px, #ddd, rgba(0,0,0,0));
             background-size: 250px 250px;
-            animation-duration: 100s, 7s; /* 100s for scroll, 7s for blink */
+            animation-duration: 100s, 7s; 
         }
 
         #stars3 {
             background-image: radial-gradient(1px 1px at 5px 55px, #fff, rgba(0,0,0,0)),
                               radial-gradient(1px 1px at 125px 95px, #eee, rgba(0,0,0,0));
             background-size: 150px 150px;
-            animation-duration: 200s, 3s; /* Slower scroll, faster blink */
+            animation-duration: 200s, 3s; 
         }
 
         .shooting-star {
@@ -282,14 +296,13 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            height: 100vh;
-            /* Updated background for parallax effect */
-            background: transparent; /* Made transparent to see stars behind */
+            height: 80vh;
+            background: transparent; 
             background-size: cover;
-            background-attachment: fixed; /* This creates the parallax effect */
+            background-attachment: fixed; 
             color: var(--white-color);
-            padding: 0 2rem;
-            overflow: hidden; /* Prevents animation overflow */
+            padding: 0 1rem;
+            overflow: hidden; 
         }
 
         .hero-logo {
@@ -299,11 +312,10 @@
         }
 
         .hero-logo img {
-            height: 240px; /* Further increased size */
-            width: 240px; /* Set width to match height for a circle */
-            border-radius: 50%; /* Make it round */
-            object-fit: cover; /* Ensure the image covers the area without stretching */
-            /* New subtle glow effect */
+            height: 240px; 
+            width: 240px; 
+            border-radius: 50%; 
+            object-fit: cover; 
             box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
         }
 
@@ -335,6 +347,10 @@
         .cta-buttons {
             animation: fadeIn 1s ease-out 0.8s forwards;
             opacity: 0;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 1rem; 
         }
 
         .cta-buttons a {
@@ -342,7 +358,7 @@
             color: var(--white-color);
             background-color: var(--accent-color);
             padding: 0.8rem 1.8rem;
-            margin: 0 0.5rem;
+            margin: 0; 
             border-radius: 5px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -363,26 +379,25 @@
             background-color: var(--accent-color);
         }
 
-        /* --- Properties Section (New Amazing Design) --- */
+        /* --- Properties Section (FIX 3: Content ALWAYS VISIBLE) --- */
         #properties {
-            background-color: transparent; /* Make transparent to show stars */
+            background-color: transparent; 
         }
 
         .properties-grid {
             display: grid;
             gap: 2rem;
-            /* Mobile-first: 1 column */
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
 
         .property-card {
-            position: relative; /* Crucial for overlay */
+            position: relative; 
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 380px; /* Gave cards a fixed height */
+            height: 380px; 
         }
 
         .property-card:hover {
@@ -397,6 +412,7 @@
             transition: transform 0.4s ease, filter 0.4s ease;
         }
 
+        /* NEW: Added this hover effect back. It zooms the image but does not hide content. */
         .property-card:hover img {
             transform: scale(1.1);
             filter: brightness(0.6);
@@ -412,47 +428,38 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            text-align: left; /* Changed to left for this style */
+            text-align: left; 
             height: 100%;
+            /* Make sure content is clickable over the image */
+            z-index: 2; 
         }
 
         .card-content h3 {
             margin-top: 0;
             font-size: 1.6rem;
             color: var(--white-color);
-            transform: translateY(80px); /* Start lower */
-            transition: transform 0.4s ease;
-        }
-
-        .property-card:hover h3 {
-            transform: translateY(0);
+            /* FIX 3: Content ALWAYS visible. Transition is no longer needed here. */
+            transform: translateY(0); 
+            transition: none; /* Removed animation */
         }
 
         .card-content p {
-            flex-grow: 0; /* Don't grow */
+            flex-grow: 0; 
             margin-bottom: 1.5rem;
-            opacity: 0; /* Hidden initially */
-            transform: translateY(60px);
-            transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
-        }
-
-        .property-card:hover p {
-            opacity: 1;
+            /* FIX 3: Content ALWAYS visible. */
+            opacity: 1; 
             transform: translateY(0);
+            transition: none; /* Removed animation */
         }
 
         .card-buttons {
             display: flex;
-            justify-content: flex-start; /* Align to left */
+            justify-content: flex-start; 
             gap: 1rem;
-            opacity: 0; /* Hidden initially */
-            transform: translateY(60px);
-            transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
-        }
-
-        .property-card:hover .card-buttons {
-            opacity: 1;
+            /* FIX 3: Content ALWAYS visible. */
+            opacity: 1; 
             transform: translateY(0);
+            transition: none; /* Removed animation */
         }
 
         .card-buttons a {
@@ -481,14 +488,14 @@
             background-color: #1ebe5a;
         }
 
-        /* --- About Us Section (Improved Design) --- */
+        /* --- About Us Section --- */
         #about {
-             background-color: rgba(17, 34, 64, 0.6); /* Consistent glass effect */
+             background-color: rgba(17, 34, 64, 0.6); 
              -webkit-backdrop-filter: blur(8px);
              backdrop-filter: blur(8px);
              border: 1px solid rgba(255, 255, 255, 0.1);
              border-radius: 15px;
-             margin: 4rem 2rem; /* Add vertical and horizontal margin */
+             margin: 4rem 2rem; 
              padding: 4rem;
              position: relative;
              z-index: 1;
@@ -501,7 +508,7 @@
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Image column, Text column */
+            grid-template-columns: 1fr 1.5fr; 
             gap: 3rem;
             align-items: center;
         }
@@ -524,9 +531,41 @@
             margin-bottom: 1rem;
         }
 
-        /* --- Footer / Contact Section (Improved Design) --- */
+        .why-choose-us {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+
+        .why-choose-us li {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .why-choose-us i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            padding-top: 4px; 
+            width: 25px; 
+            text-align: center;
+        }
+
+        .why-choose-us li div {
+            flex: 1; 
+        }
+        .why-choose-us li strong {
+            color: var(--heading-color);
+            display: block; 
+            margin-bottom: 0.25rem;
+        }
+
+
+        /* --- Footer / Contact Section --- */
         #contact {
-            background-color: rgba(10, 10, 10, 0.75); /* Frosted Glass background */
+            background-color: rgba(10, 10, 10, 0.75); 
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             color: var(--text-color);
@@ -608,44 +647,67 @@
 
         /* --- Responsive Design --- */
 
-        /* Tablet (768px and up) */
         @media (min-width: 768px) {
-            h1 {
-                font-size: 4.5rem;
-            }
-            .properties-grid {
-                /* 2 columns for tablets */
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Desktop (1025px and up) */
-        @media (min-width: 1025px) {
-            .properties-grid {
-                /* 3 columns for desktops */
-                grid-template-columns: repeat(3, 1fr);
+            #home h1 {
+                font-size: 4.5rem; 
             }
         }
         
-        /* Mobile menu adjustments */
         @media (max-width: 767px) {
-             .navbar {
+            .navbar {
+                flex-wrap: wrap; 
+            }
+            
+            .nav-toggle-label {
+                display: block; 
+            }
+
+            .nav-menu {
+                display: none; 
                 flex-direction: column;
-                align-items: center;
-                padding: 1rem;
+                width: 100%;
+                background-color: rgba(10, 10, 10, 0.95); 
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                order: 3; 
             }
+
+            #nav-toggle:checked ~ .nav-menu {
+                display: flex;
+            }
+
             .nav-links {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-                order: 3; /* Links appear last */
+                flex-direction: column; 
+                width: 100%;
+                text-align: center;
+                flex-grow: 0;
             }
+
             .nav-links li {
-                margin: 0.5rem;
+                margin: 0;
+                width: 100%;
             }
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+                width: 100%;
+            }
+            
             .nav-social {
-                display: none; /* Hide social icons in navbar on mobile to reduce clutter */
+                justify-content: center;
+                margin-top: 1.5rem; 
+                padding-top: 1.5rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                width: 90%;
+                margin-left: auto; 
+                margin-right: auto;
             }
+
             #home h1 {
                 font-size: 2.8rem;
             }
@@ -656,18 +718,18 @@
                 padding: 3rem 1rem;
             }
             #about {
-                margin: 0 1rem; /* Adjust margin for smaller screens */
-                padding: 3rem 1.5rem; /* Adjust padding */
+                margin: 0 1rem; 
+                padding: 3rem 1.5rem; 
             }
             .about-content {
-                grid-template-columns: 1fr; /* Stack columns */
+                grid-template-columns: 1fr; 
                 gap: 2rem;
             }
             .about-text {
                 text-align: center;
             }
-            .about-text p {
-                text-align: center;
+            .about-text p, .about-text .why-choose-us li {
+                text-align: left; 
             }
             h2 {
                 font-size: 2rem;
@@ -719,15 +781,19 @@
         }
 
         .call-float {
-            background-color: #1a1a1a; /* Changed from blue to dark grey/black */
+            background-color: #1a1a1a; 
             border: 1px solid var(--accent-color);
         }
+
+        /* FIX 3: Deleted the entire @media (hover: hover) block. 
+          The content is now visible by default on ALL devices, 
+          and the hover logic is simplified to just the image zoom and card lift.
+        */
 
     </style>
 </head>
 <body>
 
-    <!-- Starfield Background -->
     <div class="stars">
         <div class="stars-bg" id="stars1"></div>
         <div class="stars-bg" id="stars2"></div>
@@ -736,32 +802,39 @@
         <div class="shooting-star"></div>
     </div>
 
-    <!-- 1. Sticky Navigation Bar -->
     <nav class="navbar">
         <a href="#home" class="nav-logo">Kavach<span>Estate</span></a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-        <div class="nav-social">
-            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
-            <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-            <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        
+        <input type="checkbox" id="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <div class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </nav>
 
     <main>
-        <!-- 2. Header / Home Section -->
         <section id="home">
             <div class="hero-logo">
-                <img src="logo.PNG" alt="Kavach Estate Logo">
+                <img src="https://www.kavachestate.com/logo.PNG" alt="Kavach Estate Logo">
             </div>
+           
             <p class="tagline">Your Trusted Partner in Property</p>
             <p class="description">We offer properties starting from 50 Gaj plots to multi-acre industrial leases.</p>
             <div class="cta-buttons">
@@ -770,12 +843,10 @@
             </div>
         </section>
 
-        <!-- 3. Properties Section -->
         <section id="properties">
             <div class="container">
                 <h2>Our Property Offerings</h2>
                 <div class="properties-grid">
-                    <!-- Card 1 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=380&fit=crop" alt="Residential plots and houses in Sonipat Sectors">
                         <div class="card-content">
@@ -787,7 +858,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 2 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop" alt="Agricultural land for sale in Sonipat">
                         <div class="card-content">
@@ -799,7 +869,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 3 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1572004318732-8026d8b53930?w=400&h=380&fit=crop" alt="Residential land and villas in Sonipat">
                         <div class="card-content">
@@ -811,7 +880,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 4 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1600880292203-942bb68b2433?w=400&h=380&fit=crop" alt="Commercial land and office spaces in Sonipat">
                         <div class="card-content">
@@ -823,7 +891,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 5 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1565610214429-439a7a320384?w=400&h=380&fit=crop" alt="Industrial land and warehouses for lease in Sonipat">
                         <div class="card-content">
@@ -835,7 +902,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 6 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1588993462253-536a6a23b3ce?w=400&h=380&fit=crop" alt="Apartments and builder floors in Sonipat city society">
                         <div class="card-content">
@@ -847,7 +913,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 7 -->
                     <div class="property-card">
                         <img src="https://images.unsplash.com/photo-1533973861412-54d2633a3177?w=400&h=380&fit=crop" alt="Individual plots for investment in Sonipat">
                         <div class="card-content">
@@ -859,25 +924,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Card 8 -->
-                    <div class="property-card">
-                        <img src="URL_TO_YOUR_IMAGE" alt="Description of the property">
-                        <div class="card-content">
-                            <h3>Property Title</h3>
-                            <p>Brief description of the property</p>
-                            <div class="card-buttons">
-                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
-                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </section>
 
-        <!-- 4. About Us Section -->
         <section id="about">
             <div class="container">
                 <h2>About Kavach Estate</h2>
@@ -887,24 +937,45 @@
                     </div>
                     <div class="about-text">
                         <h3>Your Premier Real Estate Partner in Sonipat</h3>
-                        <p>At Kavach Estate, we are dedicated to making your property dreams a reality in Sonipat, Haryana. With years of experience in the local real estate market, we specialize in a diverse range of properties including residential plots, commercial spaces, industrial lands, and agricultural farms.</p>
-                        <p>Our mission is to provide transparent, reliable, and client-focused services. Whether you are looking to buy your first home, invest in a high-yield plot, or lease a large industrial area, our expert team is here to guide you through every step of the process in the Sonipat region.</p>
+                        <p>At Kavach Estate, we are dedicated to making your property dreams a reality in Sonipat, Haryana. With years of experience, we specialize in a diverse range of properties from residential plots to industrial lands.</p>
+                        
+                        <ul class="why-choose-us">
+                            <li>
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <strong>Local Expertise</strong>
+                                    Deep knowledge of the Sonipat real estate market.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <strong>Transparent Deals</strong>
+                                    Our mission is to provide reliable, client-focused, and transparent services.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-list-check"></i>
+                                <div>
+                                    <strong>Full-Service Agency</strong>
+                                    From buying your first home to leasing an industrial area, we guide you every step.
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <br>
 
-    <!-- 5. Footer / Contact Section -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <!-- Column 1: About -->
                 <div class="footer-column">
                     <h4>Kavach<span>Estate</span></h4>
                     <p>Your trusted partner in finding the perfect property. We specialize in a wide range of real estate services.</p>
                 </div>
-                <!-- Column 2: Quick Links -->
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul>
@@ -914,7 +985,6 @@
                         <li><a href="https://www.kavachestate.com" target="_blank" rel="noopener">Main Website</a></li>
                     </ul>
                 </div>
-                <!-- Column 3: Contact Info -->
                 <div class="footer-column">
                     <h4>Contact Info</h4>
                     <div class="contact-info">
@@ -923,7 +993,6 @@
                         <p><i class="fas fa-phone"></i> <a href="tel:+919817357179">+91 9817357179</a></p>
                     </div>
                 </div>
-                <!-- Column 4: Social Media -->
                 <div class="footer-column">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
@@ -943,7 +1012,6 @@
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
     <div class="floating-buttons">
         <a href="https://wa.me/919817357179" class="float-btn whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
