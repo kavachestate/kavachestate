@@ -41,13 +41,14 @@
     <style>
         /* --- CSS Variables and Global Styles --- */
         :root {
-            --primary-color: #0D2F4B; 
-            --accent-color: #FFA500; 
-            --background-color: #000000; 
-            --surface-color: #0A0A0A; 
-            --text-color: #a8b2d1; 
-            --heading-color: #e6f1ff; 
+            --primary-color: #0D2F4B;  
+            --accent-color: #FFA500;  
+            --background-color: #000000;  
+            --surface-color: #0A0A0A;  
+            --text-color: #a8b2d1;  
+            --heading-color: #e6f1ff;  
             --white-color: #FFFFFF;
+            --navbar-height: 50px; /* --- ADDED THIS VARIABLE --- */
         }
 
         html {
@@ -93,15 +94,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(10, 10, 10, 0.75); 
+            background-color: rgba(10, 10, 10, 0.75);  
             -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px); 
+            backdrop-filter: blur(10px);  
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
+            min-height: var(--navbar-height); /* Ensures it respects the height variable */
         }
 
         .nav-logo {
@@ -109,7 +111,7 @@
             font-weight: 700;
             font-size: 1.5rem;
             text-decoration: none;
-            flex-shrink: 0; 
+            flex-shrink: 0;  
         }
         
         .nav-logo span {
@@ -119,7 +121,7 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            flex-grow: 1; 
+            flex-grow: 1;  
         }
 
         .nav-links {
@@ -127,12 +129,12 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; 
-            flex-grow: 1; 
+            justify-content: center;  
+            flex-grow: 1;  
         }
 
         .nav-links li {
-            margin: 0 1.5rem; 
+            margin: 0 1.5rem;  
         }
 
         .nav-links a {
@@ -150,12 +152,12 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-left: 1.5rem; 
+            margin-left: 1.5rem;  
         }
 
         .nav-social a {
             color: var(--white-color);
-            font-size: 1rem; 
+            font-size: 1rem;  
             transition: color 0.3s ease;
         }
 
@@ -164,11 +166,11 @@
         }
 
         #nav-toggle {
-            display: none; 
+            display: none;  
         }
 
         .nav-toggle-label {
-            display: none; 
+            display: none;  
             font-size: 1.5rem;
             color: var(--white-color);
             cursor: pointer;
@@ -217,6 +219,18 @@
             }
         }
 
+        /* --- NEW KEYFRAME ADDED AS REQUESTED --- */
+        @keyframes bounce-left {
+          0%, 20%, 100% {
+            transform: translateX(0);
+          }
+          10% {
+            /* This creates the 15px "nudge" to the left */
+            transform: translateX(-15px);
+          }
+        }
+
+
         /* --- Starfield Background Effect --- */
         .stars {
             position: fixed;
@@ -225,7 +239,7 @@
             width: 100%;
             height: 100%;
             z-index: -10;
-            overflow: hidden; 
+            overflow: hidden;  
         }
 
         .stars-bg {
@@ -233,7 +247,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 200%; 
+            height: 200%;  
             background-repeat: repeat;
             background-position: 0 0;
             animation-name: animateStars, blink;
@@ -250,7 +264,7 @@
                               radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
                               radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
             background-size: 200px 200px;
-            animation-duration: 150s, 5s; 
+            animation-duration: 150s, 5s;  
         }
 
         #stars2 {
@@ -261,14 +275,14 @@
                               radial-gradient(1px 1px at 140px 110px, #fff, rgba(0,0,0,0)),
                               radial-gradient(2px 2px at 180px 150px, #ddd, rgba(0,0,0,0));
             background-size: 250px 250px;
-            animation-duration: 100s, 7s; 
+            animation-duration: 100s, 7s;  
         }
 
         #stars3 {
             background-image: radial-gradient(1px 1px at 5px 55px, #fff, rgba(0,0,0,0)),
                               radial-gradient(1px 1px at 125px 95px, #eee, rgba(0,0,0,0));
             background-size: 150px 150px;
-            animation-duration: 200s, 3s; 
+            animation-duration: 200s, 3s;  
         }
 
         .shooting-star {
@@ -297,12 +311,12 @@
             align-items: center;
             text-align: center;
             height: 80vh;
-            background: transparent; 
+            background: transparent;  
             background-size: cover;
-            background-attachment: fixed; 
+            background-attachment: fixed;  
             color: var(--white-color);
             padding: 0 1rem;
-            overflow: hidden; 
+            overflow: hidden;  
         }
 
         .hero-logo {
@@ -312,10 +326,10 @@
         }
 
         .hero-logo img {
-            height: 240px; 
-            width: 240px; 
-            border-radius: 50%; 
-            object-fit: cover; 
+            height: 240px;  
+            width: 240px;  
+            border-radius: 50%;  
+            object-fit: cover;  
             box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
         }
 
@@ -348,9 +362,9 @@
             animation: fadeIn 1s ease-out 0.8s forwards;
             opacity: 0;
             display: flex;
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 1rem; 
+            flex-wrap: wrap;  
+            justify-content: center;  
+            gap: 1rem;  
         }
 
         .cta-buttons a {
@@ -358,7 +372,7 @@
             color: var(--white-color);
             background-color: var(--accent-color);
             padding: 0.8rem 1.8rem;
-            margin: 0; 
+            margin: 0;  
             border-radius: 5px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -381,7 +395,7 @@
 
         /* --- Properties Section --- */
         #properties {
-            background-color: transparent; 
+            background-color: transparent;  
         }
         
         /* --- CSS for Filter Navigation --- */
@@ -390,7 +404,20 @@
             justify-content: center;
             flex-wrap: wrap; /* This allows buttons to wrap on desktop if needed */
             gap: 1rem;
-            margin-bottom: 3rem;
+            
+            /* --- UPDATED STICKY STYLES --- */
+            position: -webkit-sticky;
+            position: sticky;
+            top: var(--navbar-height); /* Sticks it right below the 50px navbar */
+            z-index: 950; /* Below navbar (1000) but above content */
+            
+            /* Needs a background to hide content scrolling underneath */
+            background-color: rgba(10, 10, 10, 0.9);  
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            
+            /* Replaces the old margin-bottom with padding for spacing */
+            padding: 1.5rem 1rem;
         }
 
         .filter-btn {
@@ -428,16 +455,19 @@
             display: grid;
             gap: 2rem;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+             /* --- ADDED MARGIN --- */
+             /* 1.5rem padding from sticky filter + 1.5rem margin = original 3rem gap */
+            margin-top: 1.5rem;
         }
 
         .property-card {
-            position: relative; 
+            position: relative;  
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 380px; 
+            height: 380px;  
         }
 
         .property-card:hover {
@@ -467,32 +497,32 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            text-align: left; 
+            text-align: left;  
             height: 100%;
-            z-index: 2; 
+            z-index: 2;  
         }
 
         .card-content h3 {
             margin-top: 0;
             font-size: 1.6rem;
             color: var(--white-color);
-            transform: translateY(0); 
+            transform: translateY(0);  
             transition: none;
         }
 
         .card-content p {
-            flex-grow: 0; 
+            flex-grow: 0;  
             margin-bottom: 1.5rem;
-            opacity: 1; 
+            opacity: 1;  
             transform: translateY(0);
             transition: none;
         }
 
         .card-buttons {
             display: flex;
-            justify-content: flex-start; 
+            justify-content: flex-start;  
             gap: 1rem;
-            opacity: 1; 
+            opacity: 1;  
             transform: translateY(0);
             transition: none;
         }
@@ -525,12 +555,12 @@
 
         /* --- About Us Section --- */
         #about {
-             background-color: rgba(17, 34, 64, 0.6); 
+             background-color: rgba(17, 34, 64, 0.6);  
              -webkit-backdrop-filter: blur(8px);
              backdrop-filter: blur(8px);
              border: 1px solid rgba(255, 255, 255, 0.1);
              border-radius: 15px;
-             margin: 4rem 2rem; 
+             margin: 4rem 2rem;  
              padding: 4rem;
              position: relative;
              z-index: 1;
@@ -543,7 +573,7 @@
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1.5fr; 
+            grid-template-columns: 1fr 1.5fr;  
             gap: 3rem;
             align-items: center;
         }
@@ -574,7 +604,7 @@
 
         .why-choose-us li {
             display: flex;
-            align-items: flex-start; 
+            align-items: flex-start;  
             margin-bottom: 1.25rem;
             font-size: 1rem;
         }
@@ -583,24 +613,24 @@
             color: var(--accent-color);
             font-size: 1.2rem;
             margin-right: 1rem;
-            padding-top: 4px; 
-            width: 25px; 
+            padding-top: 4px;  
+            width: 25px;  
             text-align: center;
         }
 
         .why-choose-us li div {
-            flex: 1; 
+            flex: 1;  
         }
         .why-choose-us li strong {
             color: var(--heading-color);
-            display: block; 
+            display: block;  
             margin-bottom: 0.25rem;
         }
 
 
         /* --- Footer / Contact Section --- */
         #contact {
-            background-color: rgba(10, 10, 10, 0.75); 
+            background-color: rgba(10, 10, 10, 0.75);  
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             color: var(--text-color);
@@ -684,32 +714,32 @@
 
         @media (min-width: 768px) {
             #home h1 {
-                font-size: 4.5rem; 
+                font-size: 4.5rem;  
             }
         }
         
         @media (max-width: 767px) {
             .navbar {
-                flex-wrap: wrap; 
+                flex-wrap: wrap;  
             }
             
             .nav-toggle-label {
-                display: block; 
+                display: block;  
             }
 
             .nav-menu {
-                display: none; 
+                display: none;  
                 flex-direction: column;
                 width: 100%;
-                background-color: rgba(10, 10, 10, 0.95); 
+                background-color: rgba(10, 10, 10, 0.95);  
                 -webkit-backdrop-filter: blur(10px);
                 backdrop-filter: blur(10px);
                 position: absolute;
-                top: 100%; 
+                top: 100%;  /* Changed from var(--navbar-height) to 100% to stick to the bottom of the rendered navbar */
                 left: 0;
                 padding: 1rem 0;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
-                order: 3; 
+                order: 3;  
             }
 
             #nav-toggle:checked ~ .nav-menu {
@@ -717,7 +747,7 @@
             }
 
             .nav-links {
-                flex-direction: column; 
+                flex-direction: column;  
                 width: 100%;
                 text-align: center;
                 flex-grow: 0;
@@ -735,11 +765,11 @@
             
             .nav-social {
                 justify-content: center;
-                margin-top: 1.5rem; 
+                margin-top: 1.5rem;  
                 padding-top: 1.5rem;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 width: 90%;
-                margin-left: auto; 
+                margin-left: auto;  
                 margin-right: auto;
             }
 
@@ -753,18 +783,18 @@
                 padding: 3rem 1rem;
             }
             #about {
-                margin: 0 1rem; 
-                padding: 3rem 1.5rem; 
+                margin: 0 1rem;  
+                padding: 3rem 1.5rem;  
             }
             .about-content {
-                grid-template-columns: 1fr; 
+                grid-template-columns: 1fr;  
                 gap: 2rem;
             }
             .about-text {
                 text-align: center;
             }
             .about-text p, .about-text .why-choose-us li {
-                text-align: left; 
+                text-align: left;  
             }
             h2 {
                 font-size: 2rem;
@@ -777,13 +807,17 @@
                 transform: translateX(-50%);
             }
             
-            /* --- NEW: Mobile Scroll Fix for Filter Nav --- */
+            /* --- Mobile Scroll Fix for Filter Nav --- */
             .filter-nav {
-                flex-wrap: nowrap;         /* Buttons ko wrap hone se rokta hai */
-                overflow-x: auto;          /* Horizontal scroll allow karta hai */
+                flex-wrap: nowrap;           /* Buttons ko wrap hone se rokta hai */
+                overflow-x: auto;            /* Horizontal scroll allow karta hai */
                 justify-content: flex-start; /* Buttons ko left se start karta hai */
                 -webkit-overflow-scrolling: touch; /* iOS par smooth scrolling ke liye */
-                padding-bottom: 0.5rem;      /* Thodi extra space scroll area ke liye */
+                padding-bottom: 1.5rem;      /* Use padding-bottom set in main rule */
+                
+                /* --- ANIMATION ADDED AS REQUESTED --- */
+                animation: bounce-left 5s infinite;
+                animation-delay: 2s;
             }
 
             /* --- NEW: Scrollbar ko hide karne ke liye --- */
@@ -830,13 +864,26 @@
             font-size: 2rem;
         }
 
+        /* Styles for the original buttons (now unused by HTML but safe to keep) */
         .whatsapp-float {
             background-color: #25D366;
         }
 
         .call-float {
-            background-color: #1a1a1a; 
+            background-color: #1a1a1a;  
             border: 1px solid var(--accent-color);
+        }
+
+        /* --- CSS FOR NEW SCROLL BUTTONS --- */
+        .scroll-top,
+        .scroll-bottom {
+            background-color: #1a1a1a;  
+            border: 1px solid var(--accent-color);
+        }
+
+        .scroll-top i,
+        .scroll-bottom i {
+            font-size: 1.5rem; /* Make arrows slightly smaller than primary icons */
         }
 
     </style>
@@ -883,7 +930,7 @@
             <div class="hero-logo">
                 <img src="https://www.kavachestate.com/logo.PNG" alt="Kavach Estate Logo">
             </div>
-           
+            
             <p class="tagline">Your Trusted Partner in Property</p>
             <p class="description">We offer properties starting from 50 Gaj plots to multi-acre industrial leases.</p>
             <div class="cta-buttons">
@@ -908,16 +955,149 @@
 
                 <div class="properties-grid">
                     <div class="property-card" data-category="sector">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=380&fit=crop" alt="Residential plots and houses in Sonipat Sectors">
+                        <img src="/IMG_3478.JPG" alt="Residential plots and houses in Sonipat Sectors">
                         <div class="card-content">
-                            <h3>Sonipat Sectors</h3>
-                            <p>Available: Plots, Houses, Flats</p>
+                            <h3>Sonipat Sectors 6</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
                             <div class="card-buttons">
                                 <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
                                 <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
                             </div>
                         </div>
                     </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3479.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 7</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3480.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 8</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3481.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 10</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3482.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 12</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3483.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 13</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3484.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 14</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3485.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 15</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3486.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 16</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3487.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 18</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3488.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 19</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3489.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 23</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="property-card" data-category="sector">
+                        <img src="/IMG_3490.JPG" alt="Residential plots and houses in Sonipat Sectors">
+                        <div class="card-content">
+                            <h3>Sonipat Sectors 27</h3>
+                            <p>Available: Plots, Houses, Builder Floors, Flats and SCOs</p>
+                            <div class="card-buttons">
+                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
+                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="property-card" data-category="village">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop" alt="Agricultural land for sale in Sonipat">
                         <div class="card-content">
@@ -929,17 +1109,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card" data-category="sector">
-                        <img src="https://images.unsplash.com/photo-1572004318732-8026d8b53930?w=400&h=380&fit=crop" alt="Residential land and villas in Sonipat">
-                        <div class="card-content">
-                            <h3>Residential Land</h3>
-                            <p>Plots for Houses & Villas</p>
-                            <div class="card-buttons"> 
-                                <a href="tel:+919817357179" class="btn-call" rel="noopener">Call Now</a>
-                                <a href="https://wa.me/919817357179" target="_blank" class="btn-whatsapp" rel="noopener">WhatsApp</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="property-card" data-category="city">
                         <img src="https://images.unsplash.com/photo-1600880292203-942bb68b2433?w=400&h=380&fit=crop" alt="Commercial land and office spaces in Sonipat">
                         <div class="card-content">
@@ -1062,7 +1232,7 @@
                         <a href="https://www.x.com/kavachestate " target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
                         <a href="https://www.linkedin.com/company/kavachestate " target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
 
-                     <a href="https://pin.it/1UPXONh90 " target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                       <a href="https://pin.it/1UPXONh90 " target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                          <a href="https://www.youtube.com/@kavachestate" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -1106,6 +1276,15 @@
             });
         });
     </script>
+
+    <div class="floating-buttons">
+        <a href="#home" class="float-btn scroll-top" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <a href="#contact" class="float-btn scroll-bottom" aria-label="Scroll to bottom">
+            <i class="fas fa-arrow-down"></i>
+        </a>
+    </div>
 
 </body>
 </html>
