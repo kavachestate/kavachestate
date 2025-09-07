@@ -379,10 +379,50 @@
             background-color: var(--accent-color);
         }
 
-        /* --- Properties Section (FIX 3: Content ALWAYS VISIBLE) --- */
+        /* --- Properties Section --- */
         #properties {
             background-color: transparent; 
         }
+        
+        /* --- CSS for Filter Navigation --- */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* This allows buttons to wrap on desktop if needed */
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px; /* Pill shape */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Keep button text on one line */
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-color);
+            color: var(--white-color);
+            border-color: var(--accent-color);
+        }
+        
+        /* --- Class to hide filtered cards --- */
+        .property-card.hide-card {
+            display: none; /* This is the fastest, most reliable way to filter a CSS grid */
+        }
+
 
         .properties-grid {
             display: grid;
@@ -412,7 +452,6 @@
             transition: transform 0.4s ease, filter 0.4s ease;
         }
 
-        /* NEW: Added this hover effect back. It zooms the image but does not hide content. */
         .property-card:hover img {
             transform: scale(1.1);
             filter: brightness(0.6);
@@ -430,7 +469,6 @@
             justify-content: flex-end;
             text-align: left; 
             height: 100%;
-            /* Make sure content is clickable over the image */
             z-index: 2; 
         }
 
@@ -438,28 +476,25 @@
             margin-top: 0;
             font-size: 1.6rem;
             color: var(--white-color);
-            /* FIX 3: Content ALWAYS visible. Transition is no longer needed here. */
             transform: translateY(0); 
-            transition: none; /* Removed animation */
+            transition: none;
         }
 
         .card-content p {
             flex-grow: 0; 
             margin-bottom: 1.5rem;
-            /* FIX 3: Content ALWAYS visible. */
             opacity: 1; 
             transform: translateY(0);
-            transition: none; /* Removed animation */
+            transition: none;
         }
 
         .card-buttons {
             display: flex;
             justify-content: flex-start; 
             gap: 1rem;
-            /* FIX 3: Content ALWAYS visible. */
             opacity: 1; 
             transform: translateY(0);
-            transition: none; /* Removed animation */
+            transition: none;
         }
 
         .card-buttons a {
@@ -741,6 +776,25 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            
+            /* --- NEW: Mobile Scroll Fix for Filter Nav --- */
+            .filter-nav {
+                flex-wrap: nowrap;         /* Buttons ko wrap hone se rokta hai */
+                overflow-x: auto;          /* Horizontal scroll allow karta hai */
+                justify-content: flex-start; /* Buttons ko left se start karta hai */
+                -webkit-overflow-scrolling: touch; /* iOS par smooth scrolling ke liye */
+                padding-bottom: 0.5rem;      /* Thodi extra space scroll area ke liye */
+            }
+
+            /* --- NEW: Scrollbar ko hide karne ke liye --- */
+            .filter-nav::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, etc. */
+            }
+            .filter-nav {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+            /* --- END NEW ADDITIONS --- */
         }
 
         /* --- Floating Action Buttons --- */
@@ -785,11 +839,6 @@
             border: 1px solid var(--accent-color);
         }
 
-        /* FIX 3: Deleted the entire @media (hover: hover) block. 
-          The content is now visible by default on ALL devices, 
-          and the hover logic is simplified to just the image zoom and card lift.
-        */
-
     </style>
 </head>
 <body>
@@ -818,13 +867,13 @@
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
             <div class="nav-social">
-                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
-                <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-                <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/kavachestate" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/kavachestate/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.threads.com/@kavachestate" target="_blank" rel="noopener noreferrer" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                <a href="https://www.x.com/@kavachestate" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/kavachestate" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://pin.it/1UPXONh90 " target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.youtube.com/@kavachestate" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </nav>
@@ -846,8 +895,19 @@
         <section id="properties">
             <div class="container">
                 <h2>Our Property Offerings</h2>
+
+                <div class="filter-nav">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="sector">Sector</button>
+                    <button class="filter-btn" data-filter="society">Society</button>
+                    <button class="filter-btn" data-filter="village">Village</button>
+                    <button class="filter-btn" data-filter="city">City</button>
+                    <button class="filter-btn" data-filter="colony">Colony</button>
+                </div>
+
+
                 <div class="properties-grid">
-                    <div class="property-card">
+                    <div class="property-card" data-category="sector">
                         <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=380&fit=crop" alt="Residential plots and houses in Sonipat Sectors">
                         <div class="card-content">
                             <h3>Sonipat Sectors</h3>
@@ -858,7 +918,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="village">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop" alt="Agricultural land for sale in Sonipat">
                         <div class="card-content">
                             <h3>Agricultural Land</h3>
@@ -869,7 +929,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="sector">
                         <img src="https://images.unsplash.com/photo-1572004318732-8026d8b53930?w=400&h=380&fit=crop" alt="Residential land and villas in Sonipat">
                         <div class="card-content">
                             <h3>Residential Land</h3>
@@ -880,7 +940,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="city">
                         <img src="https://images.unsplash.com/photo-1600880292203-942bb68b2433?w=400&h=380&fit=crop" alt="Commercial land and office spaces in Sonipat">
                         <div class="card-content">
                             <h3>Commercial Land</h3>
@@ -891,7 +951,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="city">
                         <img src="https://images.unsplash.com/photo-1565610214429-439a7a320384?w=400&h=380&fit=crop" alt="Industrial land and warehouses for lease in Sonipat">
                         <div class="card-content">
                             <h3>Industrial Land</h3>
@@ -902,7 +962,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="society">
                         <img src="https://images.unsplash.com/photo-1588993462253-536a6a23b3ce?w=400&h=380&fit=crop" alt="Apartments and builder floors in Sonipat city society">
                         <div class="card-content">
                             <h3>City Society</h3>
@@ -913,7 +973,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-card">
+                    <div class="property-card" data-category="colony">
                         <img src="https://images.unsplash.com/photo-1533973861412-54d2633a3177?w=400&h=380&fit=crop" alt="Individual plots for investment in Sonipat">
                         <div class="card-content">
                             <h3>Individual Plots</h3>
@@ -996,13 +1056,14 @@
                 <div class="footer-column">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
-                        <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://www.facebook.com/kavachestate " target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kavachestate" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                         <a href="https://www.threads.com/@kavachestate" target="_blank" rel="noopener noreferrer" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                        <a href="https://www.x.com/kavachestate " target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/kavachestate " target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+                     <a href="https://pin.it/1UPXONh90 " target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                         <a href="https://www.youtube.com/@kavachestate" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -1012,13 +1073,39 @@
         </div>
     </footer>
 
-    <div class="floating-buttons">
-        <a href="https://wa.me/919817357179" class="float-btn whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+919817357179" class="float-btn call-float" aria-label="Call">
-            <i class="fas fa-phone"></i>
-        </a>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all filter buttons and all property cards
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card');
+
+            // Add a click event listener to each button
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the filter value from the clicked button's data-filter attribute
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // 1. Update the 'active' class on the buttons
+                    // First, remove 'active' from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Then, add 'active' to the one that was just clicked
+                    this.classList.add('active');
+
+                    // 2. Filter the property cards
+                    propertyCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+
+                        // Check if the filter is 'all' OR if the card's category matches the filter
+                        if (filterValue === 'all' || cardCategory === filterValue) {
+                            card.classList.remove('hide-card'); // Show the card
+                        } else {
+                            card.classList.add('hide-card'); // Hide the card
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
