@@ -680,6 +680,7 @@
         margin-top: 0;
         font-size: 1.6rem;
         color: #ffffff; /* Always white on dark gradient */
+        margin-bottom: 0.5rem; /* Added margin below h3 */
       }
 
       .card-content p {
@@ -705,6 +706,8 @@
         transition: background-color 0.3s ease;
         text-align: center;
         color: var(--white-color); /* Always light text */
+        flex-grow: 1; /* Make buttons grow equally */
+        flex-basis: 0; /* Let flex-grow handle the width */
       }
       /* Force card button text to white always */
       .card-buttons a {
@@ -1064,19 +1067,40 @@
           gap: 1rem;
           padding: 0.5rem 1rem 1rem 1rem;
         }
+
+        /* --- Property Card Mobile Adjustments --- */
         .property-card {
-          flex-basis: 260px; /* Slightly smaller cards */
-          height: 350px;
+            flex-basis: 260px;
+            height: 350px;
+        }
+
+        .card-content {
+            padding: 1.2rem; /* Thodi kam padding card content mein */
         }
 
         .card-content h3 {
           font-size: 1.25rem;
+          margin-bottom: 0.5rem; /* Heading ke neeche thoda gap */
         }
 
         .card-content p {
           font-size: 0.9rem;
-          margin-bottom: 1rem;
+          margin-bottom: 1rem; /* Description ke neeche gap */
         }
+
+        /* --- Card Buttons Mobile Adjustments --- */
+        .card-buttons {
+          gap: 0.5rem; /* Buttons ke beech ka gap kam kiya */
+          /* flex-wrap: wrap; /* Agar buttons phir bhi fit na ho toh uncomment karein */
+        }
+
+        .card-buttons a {
+          padding: 0.5rem 0.8rem; /* Button padding kam ki */
+          font-size: 0.85rem; /* Font size thoda chhota kiya */
+          flex-grow: 1; /* Ensure buttons fill space */
+          flex-basis: 0; /* Let flex-grow handle width */
+        }
+
       } /* End Mobile Styles */
 
        /* Smaller Mobile Devices */
@@ -1094,15 +1118,23 @@
             .cta-buttons a {
                 flex-basis: 100%; /* Stack buttons on very small screens */
             }
-            .property-card {
+           .property-card {
                 flex-basis: 240px;
                 height: 330px;
             }
+             .card-content {
+                padding: 1rem;
+             }
              .card-content h3 {
                 font-size: 1.1rem;
             }
             .card-content p {
                 font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+             .card-buttons a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
             }
        }
 
@@ -1228,7 +1260,8 @@
           >
           <a
             href="https://www.kavachbuilders.com"
-            target="_blank" rel="noopener noreferrer" class="secondary"
+            target="_blank" rel="noopener noreferrer"
+            class="secondary"
             >Kavach Builders</a
           >
 
