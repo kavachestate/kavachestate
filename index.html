@@ -437,9 +437,10 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        height: 80vh;
+        min-height: 80vh; /* Use min-height to allow content growth */
+        height: auto; /* Allow height to adjust */
         background: transparent;
-        padding: 0 1rem;
+        padding: 4rem 1rem 2rem 1rem; /* Adjust padding as needed */
         overflow: hidden;
       }
 
@@ -450,8 +451,8 @@
       }
 
       .hero-logo img {
-        height: 240px;
-        width: 240px;
+        height: 200px; /* Slightly smaller logo */
+        width: 200px;
         border-radius: 50%;
         object-fit: cover;
         box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
@@ -472,7 +473,6 @@
         color: #ffffff; /* Override heading color for dark mode hero */
       }
 
-
       #home .tagline {
         font-size: 1.5rem;
         font-weight: 400;
@@ -485,10 +485,18 @@
       #home .description {
         font-size: 1.1rem;
         max-width: 600px;
-        margin-bottom: 2rem;
+        margin-bottom: 0.8rem; /* Adjusted margin */
         animation: fadeIn 1s ease-out 0.6s forwards;
         opacity: 0;
       }
+
+      /* New description for Kavach Builders */
+      #home .description + .description {
+        margin-top: -0.3rem; /* Adjusted margin */
+        margin-bottom: 1.5rem; /* Adjusted margin */
+        animation-delay: 0.7s; /* Make it fade in slightly after */
+      }
+
 
       .cta-buttons {
         animation: fadeIn 1s ease-out 0.8s forwards;
@@ -497,6 +505,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
+        width: 100%; /* Ensure buttons container takes full width if needed */
+        max-width: 600px; /* Match description width */
       }
 
       .cta-buttons a {
@@ -507,14 +517,25 @@
         margin: 0;
         border-radius: 5px;
         font-weight: 600;
-        transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease,
+          color 0.3s ease;
+         flex-grow: 1; /* Allow buttons to grow */
+         flex-basis: 200px; /* Minimum width before wrapping */
+         text-align: center;
       }
       /* Fix CTA button text color */
-      body[data-theme="dark"] .cta-buttons a { color: #ffffff; }
-      body[data-theme="light"] .cta-buttons a { color: #ffffff; }
-      body[data-theme="light"] .cta-buttons a.secondary { color: var(--accent-color); }
-      body[data-theme="light"] .cta-buttons a.secondary:hover { color: #ffffff; }
-
+      body[data-theme="dark"] .cta-buttons a {
+        color: #ffffff;
+      }
+      body[data-theme="light"] .cta-buttons a {
+        color: #ffffff;
+      }
+      body[data-theme="light"] .cta-buttons a.secondary {
+        color: var(--accent-color);
+      }
+      body[data-theme="light"] .cta-buttons a.secondary:hover {
+        color: #ffffff;
+      }
 
       .cta-buttons a:hover {
         background-color: #e69500;
@@ -590,7 +611,7 @@
         cursor: not-allowed;
       }
       body[data-theme="light"] .scroll-btn:disabled {
-         opacity: 0.4;
+        opacity: 0.4;
       }
 
       .property-scroll-container {
@@ -899,10 +920,11 @@
         }
       }
 
-      /* --- MOBILE STYLES (All fixes are below) --- */
+      /* --- MOBILE STYLES --- */
       @media (max-width: 767px) {
         .navbar {
           flex-wrap: wrap;
+          padding: 0.8rem 1rem; /* Adjust navbar padding */
         }
 
         .nav-toggle-label {
@@ -912,12 +934,11 @@
         .mobile-controls {
           display: flex; /* Show mobile controls wrapper */
         }
-        
+
         /* Hide the desktop theme toggle (inside the menu) */
         .nav-menu .theme-toggle-btn {
-            display: none;
+          display: none;
         }
-
 
         .nav-menu {
           display: none;
@@ -967,18 +988,38 @@
           transition: border 0.3s ease;
         }
 
+        /* --- Hero Section Mobile --- */
+        #home {
+         padding: 3rem 1rem 2rem 1rem; /* Adjust top padding */
+         min-height: 70vh; /* Adjust min height */
+        }
+
+       .hero-logo img {
+            height: 160px; /* Smaller logo on mobile */
+            width: 160px;
+        }
+
         #home h1 {
-          font-size: 2.8rem;
+          font-size: 2.5rem; /* Adjusted font size */
         }
         #home .tagline {
-          font-size: 1.2rem;
+          font-size: 1.1rem; /* Adjusted font size */
+        }
+        #home .description {
+          font-size: 0.95rem; /* Adjusted font size */
         }
 
-        #home {
-          height: auto;
-          padding: 4rem 1rem 1.5rem 1rem;
+        /* --- Buttons Mobile --- */
+        .cta-buttons {
+            gap: 0.8rem; /* Smaller gap between buttons */
+        }
+        .cta-buttons a {
+            padding: 0.7rem 1rem; /* Adjust button padding */
+            font-size: 0.9rem;  /* Adjust font size */
+            flex-basis: 150px; /* Allow slightly smaller base width */
         }
 
+        /* --- General Mobile --- */
         section {
           padding: 2.5rem 0;
         }
@@ -988,17 +1029,18 @@
         }
 
         #about {
-          margin: 0 1rem;
-          padding: 3rem 1.5rem;
+          margin: 1.5rem 1rem; /* Adjust margin */
+          padding: 2.5rem 1.5rem; /* Adjust padding */
         }
 
         h2 {
           font-size: 1.8rem;
-          margin-bottom: 2.5rem;
+          margin-bottom: 2rem; /* Adjust margin */
         }
 
         .footer-content {
           text-align: center;
+          gap: 1.5rem; /* Adjust gap */
         }
         .footer-column h4::after {
           left: 50%;
@@ -1023,7 +1065,8 @@
           padding: 0.5rem 1rem 1rem 1rem;
         }
         .property-card {
-          flex-basis: 280px;
+          flex-basis: 260px; /* Slightly smaller cards */
+          height: 350px;
         }
 
         .card-content h3 {
@@ -1034,7 +1077,36 @@
           font-size: 0.9rem;
           margin-bottom: 1rem;
         }
-      }
+      } /* End Mobile Styles */
+
+       /* Smaller Mobile Devices */
+       @media (max-width: 380px) {
+           .hero-logo img {
+                height: 140px;
+                width: 140px;
+            }
+            #home h1 {
+                font-size: 2.2rem;
+            }
+             #home .tagline {
+                font-size: 1rem;
+            }
+            .cta-buttons a {
+                flex-basis: 100%; /* Stack buttons on very small screens */
+            }
+            .property-card {
+                flex-basis: 240px;
+                height: 330px;
+            }
+             .card-content h3 {
+                font-size: 1.1rem;
+            }
+            .card-content p {
+                font-size: 0.85rem;
+            }
+       }
+
+
     </style>
   </head>
   <body>
@@ -1119,6 +1191,7 @@
           <a
             href="https://www.youtube.com/@kavachestate"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="YouTube"
             ><i class="fab fa-youtube"></i
           ></a>
@@ -1135,20 +1208,30 @@
           />
         </div>
         <h1>Kavach Estate</h1>
-        <p class="tagline">Your Trusted Partner in Property</p>
+
+        <p class="tagline">Your Trusted Partner in Property & Construction</p>
+
         <p class="description">
-          We offer properties starting from 50 Gaj plots to multi-acre
+          <b>Kavach Estate:</b> We offer properties starting from 50 Gaj plots to multi-acre
           industrial leases.
         </p>
+
+        <p class="description">
+          <b>Kavach Builders:</b> From concept to creation, we handle all your construction needs.
+        </p>
+
         <div class="cta-buttons">
           <a
-            href="https://wa.me/919817357179"
-            target="_blank"
-            rel="noopener"
+            href="#properties"
             class="primary"
-            >WhatsApp Now</a
+            >Kavach Estate</a
           >
-          <a href="tel:+919817357179" class="secondary">Call Now</a>
+          <a
+            href="https://www.kavachbuilders.com"
+            target="_blank" rel="noopener noreferrer" class="secondary"
+            >Kavach Builders</a
+          >
+
         </div>
       </section>
 
@@ -1730,7 +1813,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1754,7 +1837,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1778,7 +1861,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1802,7 +1885,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1826,7 +1909,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1850,7 +1933,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1874,7 +1957,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1898,7 +1981,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1921,7 +2004,7 @@
                 </div>
               </div>
             </div>
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1945,7 +2028,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1969,7 +2052,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -1993,7 +2076,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2017,7 +2100,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2041,7 +2124,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2065,7 +2148,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2089,7 +2172,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2113,7 +2196,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2137,7 +2220,7 @@
               </div>
             </div>
 
-               <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2161,7 +2244,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2185,7 +2268,7 @@
               </div>
             </div>
 
-              <div class="property-card" data-category="society">
+            <div class="property-card" data-category="society">
               <img
                 src="/IMG_3501.JPG"
                 alt="Apartments and builder floors in Sonipat city society"
@@ -2208,11 +2291,7 @@
                 </div>
               </div>
             </div>
-
           </div>
-
-          
-
         </div>
 
         <div class="property-row-wrapper">
@@ -2250,7 +2329,7 @@
               </div>
             </div>
 
-             <div class="property-card" data-category="village">
+            <div class="property-card" data-category="village">
               <img
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop"
                 alt="Agricultural land for sale in Sonipat"
@@ -2271,7 +2350,7 @@
                 </div>
               </div>
             </div>
-             <div class="property-card" data-category="village">
+            <div class="property-card" data-category="village">
               <img
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop"
                 alt="Agricultural land for sale in Sonipat"
@@ -2292,7 +2371,7 @@
                 </div>
               </div>
             </div>
-             <div class="property-card" data-category="village">
+            <div class="property-card" data-category="village">
               <img
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop"
                 alt="Agricultural land for sale in Sonipat"
@@ -2313,7 +2392,7 @@
                 </div>
               </div>
             </div>
-             <div class="property-card" data-category="village">
+            <div class="property-card" data-category="village">
               <img
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop"
                 alt="Agricultural land for sale in Sonipat"
@@ -2335,7 +2414,7 @@
               </div>
             </div>
 
-             <div class="property-card" data-category="village">
+            <div class="property-card" data-category="village">
               <img
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=380&fit=crop"
                 alt="Agricultural land for sale in Sonipat"
@@ -2356,11 +2435,8 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
-      
       </section>
 
       <section id="about" class="fade-in-section">
@@ -2554,7 +2630,9 @@
             container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
           });
 
-          container.addEventListener("scroll", updateScrollButtons, { passive: true });
+          container.addEventListener("scroll", updateScrollButtons, {
+            passive: true,
+          });
           new ResizeObserver(updateScrollButtons).observe(container);
           updateScrollButtons(); // Initial check
         });
