@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kavach Estate | Investor Trust Program</title>
+    <meta
+      name="description"
+      content="Kavach Estate Investor Trust Program. Calculate your 100% refundable trust fee for serious property investment in Sonipat."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Kavach Estate",
+        "url": "https://www.kavachestate.com",
+        "logo": "https://www.kavachestate.com/logo.PNG",
+        "telephone": "+919817357179",
+        "email": "kavachestate@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sonipat",
+          "addressRegion": "HR",
+          "addressCountry": "IN"
+        }
+      }
+    </script>
+
+    <style>
+      :root {
+        --primary-color: #0d2f4b;
+        --accent-color: #ffa500;
+        --background-color: #000000;
+        --surface-color: #0a0a0a;
+        --text-color: #a8b2d1;
+        --heading-color: #e6f1ff;
+        --white-color: #ffffff;
+        --navbar-height: 50px;
+        --navbar-bg: rgba(10, 10, 10, 0.75);
+        --border-color: rgba(255, 255, 255, 0.1);
+      }
+      body[data-theme="light"] {
+        --background-color: #ffffff;
+        --surface-color: #f4f4f4;
+        --text-color: #555555;
+        --heading-color: #0d2f4b;
+        --white-color: #111111;
+        --navbar-bg: rgba(255, 255, 255, 0.75);
+        --border-color: rgba(0, 0, 0, 0.1);
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      section {
+        padding: 4rem 0;
+      }
+      h1,
+      h2,
+      h3 {
+        color: var(--heading-color);
+        font-weight: 700;
+      }
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        overflow: hidden;
+      }
+      body[data-theme="light"] .stars {
+        display: none;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--navbar-bg);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.8rem 2rem;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        min-height: var(--navbar-height);
+      }
+      .nav-logo {
+        color: var(--white-color);
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .nav-logo span {
+        color: var(--accent-color);
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+      }
+      .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+      }
+      .nav-links li {
+        margin: 0 1.5rem;
+      }
+      .nav-links a {
+        color: var(--white-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+      .nav-social {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 1.5rem;
+      }
+      .nav-social a {
+        color: var(--white-color);
+        font-size: 1rem;
+      }
+      .theme-toggle-btn {
+        background: none;
+        border: none;
+        color: var(--white-color);
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+      }
+      .mobile-controls {
+        display: none;
+        align-items: center;
+        gap: 1rem;
+      }
+      #nav-toggle {
+        display: none;
+      }
+      .nav-toggle-label {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--white-color);
+        cursor: pointer;
+        z-index: 1001;
+      }
+      #contact {
+        background-color: var(--footer-bg);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        color: var(--text-color);
+        border-top: 1px solid var(--border-color);
+        position: relative;
+        z-index: 1;
+        padding: 4rem 2rem 2rem 2rem;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: left;
+      }
+      .footer-column h4 {
+        font-size: 1.2rem;
+        color: var(--heading-color);
+        margin-bottom: 1.5rem;
+      }
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-column ul li {
+        margin-bottom: 0.8rem;
+      }
+      .footer-column a {
+        color: var(--text-color);
+        text-decoration: none;
+      }
+      .footer-column a:hover {
+        color: var(--accent-color);
+      }
+      .footer-column .social-icons a {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.9rem;
+      }
+      #investor-trust {
+        padding-top: calc(var(--navbar-height) + 4rem);
+        padding-bottom: 4rem;
+      }
+      .it-intro {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3rem auto;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+      .it-calculator-box {
+        background-color: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .it-calculator-box h3 {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 0.75rem;
+      }
+      .form-group input[type="number"] {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-color);
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+      }
+      .form-group input[type="number"]::-webkit-inner-spin-button,
+      .form-group input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .form-group input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background-color: var(--background-color);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+      .checkbox-group input[type="checkbox"] {
+        width: 1.25em;
+        height: 1.25em;
+        accent-color: var(--accent-color);
+      }
+      .checkbox-group label {
+        color: var(--text-color);
+        font-size: 1rem;
+        margin: 0;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .fee-display {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 1.5rem;
+        background-color: var(--background-color);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+      .fee-display p {
+        font-size: 1.2rem;
+        color: var(--heading-color);
+        margin: 0;
+      }
+      .fee-display #fee-amount {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-top: 0.5rem;
+        display: block;
+      }
+      .fee-display #fee-note {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-color);
+        margin-top: 0.5rem;
+        display: block;
+      }
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        background-color: var(--primary-color);
+        border-radius: 8px;
+        border: 1px solid var(--accent-color);
+      }
+      .trust-badge i {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+      }
+      .trust-badge p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .button-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .pay-button {
+        background-color: var(--accent-color);
+        color: #ffffff;
+        border: 2px solid var(--accent-color);
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        flex-grow: 1;
+        flex-basis: 200px;
+        text-align: center;
+      }
+      .pay-button:hover {
+        background-color: #e69500;
+        border-color: #e69500;
+        transform: translateY(-3px);
+      }
+      .pay-button i {
+        margin-right: 0.75rem;
+      }
+      .pay-button.secondary {
+        background-color: transparent;
+        color: var(--accent-color);
+      }
+      body[data-theme="light"] .pay-button.secondary {
+        color: var(--accent-color);
+      }
+      .pay-button.secondary:hover {
+        background-color: var(--accent-color);
+        color: #ffffff;
+      }
+
+      /* --- Responsive Mobile Styles --- */
+      @media (max-width: 767px) {
+        .navbar {
+          flex-wrap: wrap;
+          padding: 0.8rem 1rem;
+        }
+        .nav-toggle-label {
+          display: block;
+        }
+        .mobile-controls {
+          display: flex;
+        }
+        .nav-menu .theme-toggle-btn {
+          display: none;
+        }
+        .nav-menu {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: var(--mobile-menu-bg);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          position: absolute;
+          top: 100%;
+          left: 0;
+          padding: 1rem 0;
+          border-top: 1px solid var(--border-color);
+          order: 3;
+        }
+        #nav-toggle:checked ~ .nav-menu {
+          display: flex;
+        }
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+          flex-grow: 0;
+        }
+        .nav-links li {
+          margin: 0;
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          width: 100%;
+        }
+        .nav-social {
+          justify-content: center;
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--border-color);
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        section {
+          padding: 2.5rem 0;
+        }
+        h2 {
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+        }
+        .footer-content {
+          text-align: center;
+          gap: 1.5rem;
+        }
+        .footer-column h4::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        #investor-trust {
+          padding-top: calc(var(--navbar-height) + 2rem);
+        }
+        .it-calculator-box {
+          padding: 1.5rem;
+          margin: 0 1rem 2rem 1rem;
+        }
+        .it-calculator-box h3 {
+          font-size: 1.6rem;
+        }
+        .fee-display #fee-amount {
+          font-size: 2rem;
+        }
+        .pay-button {
+          flex-basis: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <div class="stars"></div>
+
+    <nav class="navbar">
+      <a href="index.html" class="nav-logo">Kavach<span>Estate</span></a>
+      <div class="mobile-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle light/dark mode">
+          <i class="fas fa-sun icon-sun"></i>
+          <i class="fas fa-moon icon-moon" style="display: none"></i>
+        </button>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <i class="fas fa-bars"></i>
+        </label>
+      </div>
+      <input type="checkbox" id="nav-toggle" />
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#properties">Properties</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a href="investor-trust.html" style="color: var(--accent-color)"
+              >Investor Trust</a
+            >
+          </li>
+        </ul>
+        <div class="nav-social">
+          <button class="theme-toggle-btn" aria-label="Toggle light/dark mode">
+            <i class="fas fa-sun icon-sun"></i>
+            <i class="fas fa-moon icon-moon" style="display: none"></i>
+          </button>
+          <a
+            href="https://www.facebook.com/kavachestate"
+            target="_blank"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/kavachestate/"
+            target="_blank"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@kavachestate"
+            target="_blank"
+            aria-label="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="investor-trust" class="container">
+        <h2 class="fade-in-section">Investor Trust Program</h2>
+        <p class="it-intro fade-in-section">
+          Aapka time waste na ho, isliye humne ek simple process banaya hai. Yeh
+          calculator aapko batayega ki aapka 'Bharosa Fee' (Registration Fee)
+          kitna hoga, jo **100% Refundable** hai.
+        </p>
+
+        <div class="it-calculator-box fade-in-section">
+          <h3>Apna Bharosa Fee Calculate Karein</h3>
+          <div class="form-group">
+            <label for="budget">Aapka Property Budget (₹) Daalein:</label>
+            <input
+              type="number"
+              id="budget"
+              placeholder="Jaise: 5000000"
+              oninput="calculateFee()"
+            />
+          </div>
+          <div class="checkbox-group" onclick="toggleCheckbox()">
+            <input
+              type="checkbox"
+              id="officeVisit"
+              onchange="calculateFee()"
+            />
+            <label for="officeVisit"
+              >Main Office visit karke register karunga (100% Discount)</label
+            >
+          </div>
+          <div class="fee-display">
+            <p>Aapka 'Bharosa Fee' (Registration Fee):</p>
+            <span id="fee-amount">₹0</span>
+            <span id="fee-note">Upar apna budget daal kar check karein</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-shield-alt"></i>
+            <p>
+              100% Refund Guarantee! Deal final na hone par aapki poori fee 100%
+              wapas.
+            </p>
+          </div>
+          <div class="button-wrapper" id="button-wrapper">
+            <button
+              class="pay-button"
+              id="payBtn"
+              onclick="processPayment()"
+              disabled
+            >
+              Pehle Budget Daalein
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="fade-in-section">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h4>Kavach<span>Estate</span></h4>
+            <p>
+              Your trusted partner in finding the perfect property. We
+              specialize in a wide range of real estate services.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html#home">Home</a></li>
+              <li><a href="index.html#properties">Properties</a></li>
+              <li><a href="index.html#about">About Us</a></li>
+              <li><a href="investor-trust.html">Investor Trust Program</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact Info</h4>
+            <div class="contact-info">
+              <p><i class="fas fa-map-marker-alt"></i> Sonipat, Haryana</p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:kavachestate@gmail.com"
+                  >kavachestate@gmail.com</a
+                >
+              </p>
+              <p>
+                <i class="fas fa-phone"></i>
+                <a href="tel:+919817357179">+91 9817357179</a>
+              </p>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a
+                href="https://www.facebook.com/kavachestate"
+                target="_blank"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/kavachestate/"
+                target="_blank"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/@kavachestate"
+                target="_blank"
+                aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2025 Kavach Estate. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let finalFee = 0; // Global variable to store the fee
+
+      // <<< --- YAHAN BADLO (Kadam 1 se) --- >>>
+      const RAZORPAY_KEY_ID = "YAHAN_APNI_KEY_ID_DAALEIN";
+
+      // <<< --- YAHAN BADLO (Kadam 2C se) --- >>>
+      const BACKEND_URL = "https://kavach-backend.vercel.app/api/create-order"; // Yahaan Vercel se mila URL daalein
+
+      function calculateFee() {
+        let budgetInput = document.getElementById("budget");
+        let isOfficeVisit = document.getElementById("officeVisit").checked;
+        let feeAmountEl = document.getElementById("fee-amount");
+        let feeNoteEl = document.getElementById("fee-note");
+        let buttonWrapper = document.getElementById("button-wrapper");
+        let budget = parseFloat(budgetInput.value);
+
+        if (isOfficeVisit) {
+          finalFee = 0;
+          feeAmountEl.innerText = "₹0";
+          feeNoteEl.innerText = "100% Discount Applied! (Office Visit)";
+          buttonWrapper.innerHTML = `
+            <a href="tel:+919817357179" class="pay-button">
+              <i class="fas fa-phone"></i> Call se Book Karein
+            </a>
+            <a href="https?://wa.me/919817357179?text=Hello, main Investor Trust Program ke liye office visit book karna chahta hoon." target="_blank" class="pay-button secondary">
+              <i class="fab fa-whatsapp"></i> WhatsApp se Book Karein
+            </a>`;
+          return;
+        }
+
+        if (isNaN(budget) || budget <= 0) {
+          finalFee = 0;
+          feeAmountEl.innerText = "₹0";
+          feeNoteEl.innerText = "Upar apna budget daalein";
+          buttonWrapper.innerHTML = `
+            <button class="pay-button" id="payBtn" onclick="processPayment()" disabled>
+              Pehle Budget Daalein
+            </button>`;
+          return;
+        }
+
+        if (budget < 10000000) {
+          finalFee = 10000;
+          feeNoteEl.innerText = "(₹1 Crore se kam ke budget ke liye Fixed Fee)";
+        } else {
+          finalFee = Math.round(budget * 0.001);
+          feeNoteEl.innerText = "(Aapke budget ka 0.1%)";
+        }
+
+        let feeString = finalFee.toLocaleString("en-IN");
+        feeAmountEl.innerText = "₹" + feeString;
+        buttonWrapper.innerHTML = `
+          <button class="pay-button" id="payBtn" onclick="processPayment()">
+            <i class="fas fa-lock"></i> ₹${feeString} Abhi Register Karein
+          </button>`;
+      }
+
+      function toggleCheckbox() {
+        let checkbox = document.getElementById("officeVisit");
+        checkbox.checked = !checkbox.checked;
+        calculateFee();
+      }
+
+      async function processPayment() {
+        if (finalFee <= 0) return;
+        document.getElementById("payBtn").disabled = true;
+        document.getElementById("payBtn").innerText = "Wait...";
+
+        try {
+          // 1. Apne Backend Server se Order ID Maangein
+          const response = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              amount: finalFee, // Amount in Rupees
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Server se order create nahi hua.");
+          }
+
+          const order = await response.json();
+
+          if (!order || !order.id) {
+            throw new Error("Server se galat order ID mili.");
+          }
+
+          // 2. Razorpay ka Checkout Popup Kholein
+          const options = {
+            key: RAZORPAY_KEY_ID, // Aapki Key ID
+            amount: order.amount_in_paise, // Amount in paise (server se aayega)
+            currency: "INR",
+            name: "Kavach Estate",
+            description: "Investor Trust Program Fee",
+            image: "https://www.kavachestate.com/logo.PNG",
+            order_id: order.id, // Server se mila Order ID
+            handler: function (response) {
+              // 3. Payment Successful Hone Par
+              alert(
+                "Payment Successful! Registration ID: " +
+                  response.razorpay_payment_id
+              );
+              window.open(
+                `https://wa.me/919817357179?text=Payment Successful! Maine ₹${finalFee} pay kar diye hain. Payment ID: ${response.razorpay_payment_id}`,
+                "_blank"
+              );
+            },
+            prefill: {
+              name: "",
+              email: "",
+              contact: "",
+            },
+            notes: {
+              program: "Investor Trust",
+            },
+            theme: {
+              color: "#0D2F4B",
+            },
+          };
+
+          const rzp = new Razorpay(options);
+          rzp.on("payment.failed", function (response) {
+            alert("Payment Failed: " + response.error.description);
+            calculateFee(); // Button ko wapas reset kar dein
+          });
+
+          rzp.open();
+        } catch (error) {
+          console.error("Payment Error:", error);
+          alert(
+            "Payment shuru karne mein error aa gaya. Please refresh karke try karein."
+          );
+          calculateFee();
+        }
+      }
+
+      // --- Baaki ka original JavaScript (Theme Toggle, etc.) ---
+      document.addEventListener("DOMContentLoaded", function () {
+        const allToggleBtns = document.querySelectorAll(".theme-toggle-btn");
+        const body = document.body;
+        const sunIcons = document.querySelectorAll(".icon-sun");
+        const moonIcons = document.querySelectorAll(".icon-moon");
+
+        function applyTheme(theme) {
+          body.dataset.theme = theme;
+          localStorage.setItem("kavachEstateTheme", theme);
+          if (theme === "light") {
+            sunIcons.forEach((i) => (i.style.display = "none"));
+            moonIcons.forEach((i) => (i.style.display = "inline-block"));
+          } else {
+            sunIcons.forEach((i) => (i.style.display = "inline-block"));
+            moonIcons.forEach((i) => (i.style.display = "none"));
+          }
+        }
+        allToggleBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            let currentTheme = body.dataset.theme;
+            applyTheme(currentTheme === "dark" ? "light" : "dark");
+          });
+        });
+        const savedTheme =
+          localStorage.getItem("kavachEstateTheme") || "dark";
+        applyTheme(savedTheme);
+
+        const sections = document.querySelectorAll(".fade-in-section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        sections.forEach((section) => observer.observe(section));
+        calculateFee();
+      });
+    </script>
+  </body>
+</html>
