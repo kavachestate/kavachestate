@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Kavach Estate | Investor Trust Program</title>
     <meta
       name="description"
       content="Kavach Estate Investor Trust Program. Calculate your 100% refundable trust fee for serious property investment in Sonipat."
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,82 +42,120 @@
     </script>
 
     <style>
+      /* --- CSS Variables and Global Styles --- */
       :root {
+        /* DARK MODE (DEFAULT) */
         --primary-color: #0d2f4b;
         --accent-color: #ffa500;
         --background-color: #000000;
         --surface-color: #0a0a0a;
         --text-color: #a8b2d1;
         --heading-color: #e6f1ff;
-        --white-color: #ffffff;
+        --white-color: #ffffff; /* Used for pure white text/icons on dark bg */
         --navbar-height: 50px;
+
         --navbar-bg: rgba(10, 10, 10, 0.75);
+        --mobile-menu-bg: rgba(10, 10, 10, 0.95);
+        --footer-bg: rgba(10, 10, 10, 0.75);
+        --about-bg: rgba(17, 34, 64, 0.6);
         --border-color: rgba(255, 255, 255, 0.1);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        --card-gradient: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.95) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        --heading-gradient: linear-gradient(
+          120deg,
+          var(--heading-color),
+          var(--white-color)
+        );
+        --scroll-btn-bg: rgba(255, 255, 255, 0.1);
       }
+
       body[data-theme="light"] {
+        /* LIGHT MODE OVERRIDES */
         --background-color: #ffffff;
         --surface-color: #f4f4f4;
         --text-color: #555555;
-        --heading-color: #0d2f4b;
-        --white-color: #111111;
+        --heading-color: #0d2f4b; /* Use primary color for headings */
+        --white-color: #111111; /* This var is used for text in navbar, must be dark */
+
         --navbar-bg: rgba(255, 255, 255, 0.75);
+        --mobile-menu-bg: rgba(255, 255, 255, 0.95);
+        --footer-bg: #f9f9f9;
+        --about-bg: #f0f4f8; /* A light blueish gray */
         --border-color: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        --card-gradient: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        --heading-gradient: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        --scroll-btn-bg: rgba(0, 0, 0, 0.05);
       }
+
+      /* Hide starfield in light mode */
+      body[data-theme="light"] .stars,
+      body[data-theme="light"] .shooting-star {
+        display: none;
+      }
+
       html {
         scroll-behavior: smooth;
         font-size: 16px;
       }
+
       body {
         margin: 0;
         font-family: "Montserrat", sans-serif;
         background-color: var(--background-color);
         color: var(--text-color);
         line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
+
       * {
         box-sizing: border-box;
       }
+
       section {
         padding: 4rem 0;
       }
+
       h1,
       h2,
       h3 {
         color: var(--heading-color);
         font-weight: 700;
+        transition: color 0.3s ease;
       }
+
       h2 {
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 3rem;
         padding: 0 1rem;
+        background: var(--heading-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
+
       .container {
-        max-width: 900px;
+        max-width: 900px; /* Thoda chhota container calculator page ke liye */
         margin: 0 auto;
         padding: 0 1rem;
       }
-      .fade-in-section {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      .fade-in-section.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .stars {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -10;
-        overflow: hidden;
-      }
-      body[data-theme="light"] .stars {
-        display: none;
-      }
+
+      /* --- Navigation Bar --- */
       .navbar {
         display: flex;
         justify-content: space-between;
@@ -130,7 +170,9 @@
         width: 100%;
         z-index: 1000;
         min-height: var(--navbar-height);
+        transition: background-color 0.3s ease, border-bottom 0.3s ease;
       }
+
       .nav-logo {
         color: var(--white-color);
         font-weight: 700;
@@ -138,14 +180,22 @@
         text-decoration: none;
         flex-shrink: 0;
       }
+
       .nav-logo span {
         color: var(--accent-color);
+        transition: text-shadow 0.3s ease;
       }
+
+      .nav-logo:hover span {
+        text-shadow: 0 0 8px var(--accent-color);
+      }
+
       .nav-menu {
         display: flex;
         align-items: center;
         flex-grow: 1;
       }
+
       .nav-links {
         list-style: none;
         margin: 0;
@@ -154,44 +204,75 @@
         justify-content: center;
         flex-grow: 1;
       }
+
       .nav-links li {
         margin: 0 1.5rem;
       }
+
       .nav-links a {
         color: var(--white-color);
         text-decoration: none;
         font-weight: 600;
+        transition: color 0.3s ease;
       }
+
       .nav-links a:hover {
         color: var(--accent-color);
       }
+
       .nav-social {
         display: flex;
         align-items: center;
         gap: 1rem;
         margin-left: 1.5rem;
       }
+
       .nav-social a {
         color: var(--white-color);
         font-size: 1rem;
+        transition: all 0.3s ease;
       }
+
+      .nav-social a:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      /* --- Theme Toggle Button Styles --- */
       .theme-toggle-btn {
         background: none;
         border: none;
         color: var(--white-color);
-        font-size: 1rem;
+        font-size: 1rem; /* Matches social icons */
         cursor: pointer;
+        transition: all 0.3s ease;
         padding: 0;
-        line-height: 1;
+        line-height: 1; /* Aligns icon vertically */
       }
+
+      .theme-toggle-btn:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px); /* Matches social icon hover */
+      }
+
+      /* Wrapper for mobile controls (toggle + hamburger) */
       .mobile-controls {
-        display: none;
+        display: none; /* Hidden on desktop */
         align-items: center;
         gap: 1rem;
       }
+
+      .mobile-controls .theme-toggle-btn {
+        font-size: 1.2rem; /* Slightly larger for mobile tap */
+      }
+      .mobile-controls .theme-toggle-btn:hover {
+        transform: none; /* Disable transform on mobile */
+      }
+
       #nav-toggle {
         display: none;
       }
+
       .nav-toggle-label {
         display: none;
         font-size: 1.5rem;
@@ -199,6 +280,148 @@
         cursor: pointer;
         z-index: 1001;
       }
+
+      /* --- Keyframe Animations --- */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes animateStars {
+        from {
+          transform: translateY(0px);
+        }
+        to {
+          transform: translateY(-2000px);
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes shooting-star-animation {
+        0% {
+          transform: translate(0, 0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(150vw, -150vh);
+          opacity: 0;
+        }
+      }
+
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Starfield Background Effect --- */
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        overflow: hidden;
+      }
+
+      .stars-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        background-repeat: repeat;
+        background-position: 0 0;
+        animation-name: animateStars, blink;
+        animation-timing-function: linear, ease-in-out;
+        animation-iteration-count: infinite, infinite;
+        animation-direction: normal, alternate;
+      }
+
+      #stars1 {
+        background-image: radial-gradient(
+            1px 1px at 20px 30px,
+            #eee,
+            rgba(0, 0, 0, 0)
+          ),
+          radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+        background-size: 200px 200px;
+        animation-duration: 150s, 5s;
+      }
+
+      #stars2 {
+        background-image: radial-gradient(
+            1px 1px at 10px 90px,
+            #eee,
+            rgba(0, 0, 0, 0)
+          ),
+          radial-gradient(2px 2px at 80px 30px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 100px 180px, #ddd, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 190px 60px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(1px 1px at 140px 110px, #fff, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 180px 150px, #ddd, rgba(0, 0, 0, 0));
+        background-size: 250px 250px;
+        animation-duration: 100s, 7s;
+      }
+
+      #stars3 {
+        background-image: radial-gradient(
+            1px 1px at 5px 55px,
+            #fff,
+            rgba(0, 0, 0, 0)
+          ),
+          radial-gradient(1px 1px at 125px 95px, #eee, rgba(0, 0, 0, 0));
+        background-size: 150px 150px;
+        animation-duration: 200s, 3s;
+      }
+
+      .shooting-star {
+        position: absolute;
+        top: 50%;
+        left: -100px;
+        height: 2px;
+        background: linear-gradient(
+          -45deg,
+          var(--accent-color),
+          rgba(0, 0, 0, 0)
+        );
+        border-radius: 999px;
+        filter: drop-shadow(0 0 6px var(--accent-color));
+        animation: shooting-star-animation 15s linear infinite;
+      }
+
+      .shooting-star:nth-child(2) {
+        top: 20%;
+        left: -50px;
+        animation-delay: 5s;
+        animation-duration: 12s;
+      }
+
+      /* --- Footer / Contact Section --- */
       #contact {
         background-color: var(--footer-bg);
         -webkit-backdrop-filter: blur(10px);
@@ -208,7 +431,9 @@
         position: relative;
         z-index: 1;
         padding: 4rem 2rem 2rem 2rem;
+        transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
       }
+
       .footer-content {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -216,41 +441,84 @@
         margin-bottom: 3rem;
         text-align: left;
       }
+
       .footer-column h4 {
         font-size: 1.2rem;
         color: var(--heading-color);
         margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
       }
+
+      .footer-column h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
       .footer-column ul {
         list-style: none;
         padding: 0;
         margin: 0;
       }
+
       .footer-column ul li {
         margin-bottom: 0.8rem;
       }
+
       .footer-column a {
         color: var(--text-color);
         text-decoration: none;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+        display: inline-block;
       }
+
       .footer-column a:hover {
         color: var(--accent-color);
+        padding-left: 5px;
       }
+
+      .footer-column .contact-info p {
+        margin-bottom: 0.8rem;
+      }
+
       .footer-column .social-icons a {
         font-size: 1.2rem;
         margin-right: 1rem;
+        display: inline-block;
+        transition: all 0.3s ease;
       }
+
+      .footer-column .social-icons a:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px) scale(1.1);
+      }
+
       .footer-bottom {
         text-align: center;
         margin-top: 2rem;
         padding-top: 2rem;
         border-top: 1px solid var(--border-color);
         font-size: 0.9rem;
+        transition: border 0.3s ease;
       }
+
+      /* --- ############ NAYA CALCULATOR CSS ############ --- */
+
       #investor-trust {
-        padding-top: calc(var(--navbar-height) + 4rem);
+        padding-top: calc(
+          var(--navbar-height) + 4rem
+        ); /* Push content below sticky nav */
         padding-bottom: 4rem;
+        min-height: 80vh; /* Page ko thoda lamba rakhein */
+        position: relative;
+        z-index: 1; /* Taaki stars ke upar rahe */
       }
+
       .it-intro {
         text-align: center;
         max-width: 700px;
@@ -258,13 +526,17 @@
         font-size: 1.1rem;
         line-height: 1.7;
       }
+
       .it-calculator-box {
         background-color: var(--surface-color);
         border: 1px solid var(--border-color);
         border-radius: 15px;
         padding: 2.5rem;
         margin-bottom: 2.5rem;
+        transition: background-color 0.3s ease, border 0.3s ease;
+        box-shadow: var(--card-shadow);
       }
+
       .it-calculator-box h3 {
         font-size: 2rem;
         color: var(--accent-color);
@@ -272,9 +544,11 @@
         margin-bottom: 1.5rem;
         text-align: center;
       }
+
       .form-group {
         margin-bottom: 1.5rem;
       }
+
       .form-group label {
         display: block;
         font-size: 1.1rem;
@@ -282,6 +556,7 @@
         color: var(--heading-color);
         margin-bottom: 0.75rem;
       }
+
       .form-group input[type="number"] {
         width: 100%;
         padding: 0.8rem 1rem;
@@ -291,6 +566,11 @@
         color: var(--text-color);
         font-size: 1.2rem;
         font-family: "Montserrat", sans-serif;
+        transition: border-color 0.3s, background-color 0.3s;
+      }
+      .form-group input[type="number"]:focus {
+        border-color: var(--accent-color);
+        outline: none;
       }
       .form-group input[type="number"]::-webkit-inner-spin-button,
       .form-group input[type="number"]::-webkit-outer-spin-button {
@@ -300,6 +580,7 @@
       .form-group input[type="number"] {
         -moz-appearance: textfield;
       }
+
       .checkbox-group {
         display: flex;
         align-items: center;
@@ -309,7 +590,12 @@
         border-radius: 8px;
         border: 1px solid var(--border-color);
         cursor: pointer;
+        transition: background-color 0.3s, border 0.3s;
       }
+      .checkbox-group:hover {
+        background-color: var(--surface-color);
+      }
+
       .checkbox-group input[type="checkbox"] {
         width: 1.25em;
         height: 1.25em;
@@ -322,6 +608,7 @@
         font-weight: 600;
         cursor: pointer;
       }
+
       .fee-display {
         text-align: center;
         padding: 2rem;
@@ -329,12 +616,15 @@
         background-color: var(--background-color);
         border-radius: 8px;
         border: 1px solid var(--border-color);
+        transition: background-color 0.3s, border 0.3s;
       }
+
       .fee-display p {
         font-size: 1.2rem;
         color: var(--heading-color);
         margin: 0;
       }
+
       .fee-display #fee-amount {
         font-size: 2.5rem;
         font-weight: 700;
@@ -349,6 +639,7 @@
         margin-top: 0.5rem;
         display: block;
       }
+
       .trust-badge {
         display: flex;
         align-items: center;
@@ -369,6 +660,7 @@
         font-weight: 600;
         color: #ffffff;
       }
+
       .button-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -376,6 +668,7 @@
         gap: 1rem;
         margin-top: 2rem;
       }
+
       .pay-button {
         background-color: var(--accent-color);
         color: #ffffff;
@@ -412,21 +705,32 @@
         color: #ffffff;
       }
 
-      /* --- Responsive Mobile Styles --- */
+      /* --- ############ END NAYA CSS ############ --- */
+
+      /* --- Responsive Design --- */
+      @media (max-width: 992px) {
+        /* Aapka original responsive code yahaan... */
+      }
+
+      /* --- MOBILE STYLES --- */
       @media (max-width: 767px) {
         .navbar {
           flex-wrap: wrap;
           padding: 0.8rem 1rem;
         }
+
         .nav-toggle-label {
           display: block;
         }
+
         .mobile-controls {
           display: flex;
         }
+
         .nav-menu .theme-toggle-btn {
           display: none;
         }
+
         .nav-menu {
           display: none;
           flex-direction: column;
@@ -440,16 +744,20 @@
           padding: 1rem 0;
           border-top: 1px solid var(--border-color);
           order: 3;
+          transition: background-color 0.3s ease, border 0.3s ease;
         }
+
         #nav-toggle:checked ~ .nav-menu {
           display: flex;
         }
+
         .nav-links {
           flex-direction: column;
           width: 100%;
           text-align: center;
           flex-grow: 0;
         }
+
         .nav-links li {
           margin: 0;
           width: 100%;
@@ -459,6 +767,7 @@
           padding: 1rem 0;
           width: 100%;
         }
+
         .nav-social {
           justify-content: center;
           margin-top: 1.5rem;
@@ -467,14 +776,19 @@
           width: 90%;
           margin-left: auto;
           margin-right: auto;
+          transition: border 0.3s ease;
         }
+
+        /* --- General Mobile --- */
         section {
           padding: 2.5rem 0;
         }
+
         h2 {
           font-size: 1.8rem;
           margin-bottom: 2rem;
         }
+
         .footer-content {
           text-align: center;
           gap: 1.5rem;
@@ -483,6 +797,8 @@
           left: 50%;
           transform: translateX(-50%);
         }
+
+        /* --- Calculator Mobile --- */
         #investor-trust {
           padding-top: calc(var(--navbar-height) + 2rem);
         }
@@ -499,14 +815,21 @@
         .pay-button {
           flex-basis: 100%;
         }
-      }
+      } /* End Mobile Styles */
     </style>
   </head>
   <body data-theme="dark">
-    <div class="stars"></div>
+    <div class="stars">
+      <div class="stars-bg" id="stars1"></div>
+      <div class="stars-bg" id="stars2"></div>
+      <div class="stars-bg" id="stars3"></div>
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+    </div>
 
     <nav class="navbar">
       <a href="index.html" class="nav-logo">Kavach<span>Estate</span></a>
+
       <div class="mobile-controls">
         <button class="theme-toggle-btn" aria-label="Toggle light/dark mode">
           <i class="fas fa-sun icon-sun"></i>
@@ -516,10 +839,12 @@
           <i class="fas fa-bars"></i>
         </label>
       </div>
+
       <input type="checkbox" id="nav-toggle" />
+
       <div class="nav-menu">
         <ul class="nav-links">
-          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="index.html#properties">Properties</a></li>
           <li><a href="index.html#about">About Us</a></li>
           <li><a href="#contact">Contact Us</a></li>
@@ -537,22 +862,25 @@
           <a
             href="https://www.facebook.com/kavachestate"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Facebook"
             ><i class="fab fa-facebook-f"></i
           ></a>
           <a
             href="https://www.instagram.com/kavachestate/"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             ><i class="fab fa-instagram"></i
           ></a>
           <a
             href="https://www.youtube.com/@kavachestate"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="YouTube"
             ><i class="fab fa-youtube"></i
           ></a>
-        </div>
+          </div>
       </div>
     </nav>
 
@@ -600,277 +928,4 @@
           </div>
           <div class="button-wrapper" id="button-wrapper">
             <button
-              class="pay-button"
-              id="payBtn"
-              onclick="processPayment()"
-              disabled
-            >
-              Pehle Budget Daalein
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer id="contact" class="fade-in-section">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h4>Kavach<span>Estate</span></h4>
-            <p>
-              Your trusted partner in finding the perfect property. We
-              specialize in a wide range of real estate services.
-            </p>
-          </div>
-          <div class="footer-column">
-            <h4>Quick Links</h4>
-            <ul>
-               <li><a href="#home">Home</a></li>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="/investor-trust.html">Investor Trust</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Contact Info</h4>
-            <div class="contact-info">
-              <p><i class="fas fa-map-marker-alt"></i> Sonipat, Haryana</p>
-              <p>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:kavachestate@gmail.com"
-                  >kavachestate@gmail.com</a
-                >
-              </p>
-              <p>
-                <i class="fas fa-phone"></i>
-                <a href="tel:+919817357179">+91 9817357179</a>
-              </p>
-            </div>
-          </div>
-          <div class="footer-column">
-            <h4>Follow Us</h4>
-            <div class="social-icons">
-              <a
-                href="https://www.facebook.com/kavachestate"
-                target="_blank"
-                aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/kavachestate/"
-                target="_blank"
-                aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a
-                href="https://www.youtube.com/@kavachestate"
-                target="_blank"
-                aria-label="YouTube"
-                ><i class="fab fa-youtube"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          &copy; 2025 Kavach Estate. All Rights Reserved.
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      let finalFee = 0; // Global variable to store the fee
-
-      // <<< --- AAPKI KEY ID YAHAN ADD KAR DI GAYI HAI --- >>>
-      const RAZORPAY_KEY_ID = "rzp_live_DTTe9Wy66L5DbW";
-
-      // <<< --- AAPKA VERCEL URL UPDATE KAR DIYA GAYA HAI --- >>>
-      const BACKEND_URL = "https://investor-trust-backend.vercel.app/api/create-order";
-
-      
-      function calculateFee() {
-        let budgetInput = document.getElementById("budget");
-        let isOfficeVisit = document.getElementById("officeVisit").checked;
-        let feeAmountEl = document.getElementById("fee-amount");
-        let feeNoteEl = document.getElementById("fee-note");
-        let buttonWrapper = document.getElementById("button-wrapper");
-        let budget = parseFloat(budgetInput.value);
-
-        if (isOfficeVisit) {
-          finalFee = 0;
-          feeAmountEl.innerText = "₹0";
-          feeNoteEl.innerText = "100% Discount Applied! (Office Visit)";
-          buttonWrapper.innerHTML = `
-            <a href="tel:+919817357179" class="pay-button">
-              <i class="fas fa-phone"></i> Call se Book Karein
-            </a>
-            <a href="https?://wa.me/919817357179?text=Hello, main Investor Trust Program ke liye office visit book karna chahta hoon." target="_blank" class="pay-button secondary">
-              <i class="fab fa-whatsapp"></i> WhatsApp se Book Karein
-            </a>`;
-          return;
-        }
-
-        if (isNaN(budget) || budget <= 0) {
-          finalFee = 0;
-          feeAmountEl.innerText = "₹0";
-          feeNoteEl.innerText = "Upar apna budget daalein";
-          buttonWrapper.innerHTML = `
-            <button class="pay-button" id="payBtn" onclick="processPayment()" disabled>
-              Pehle Budget Daalein
-            </button>`;
-          return;
-        }
-
-        if (budget < 10000000) {
-          finalFee = 10000;
-          feeNoteEl.innerText = "(₹1 Crore se kam ke budget ke liye Fixed Fee)";
-        } else {
-          finalFee = Math.round(budget * 0.001);
-          feeNoteEl.innerText = "(Aapke budget ka 0.1%)";
-        }
-
-        let feeString = finalFee.toLocaleString("en-IN");
-        feeAmountEl.innerText = "₹" + feeString;
-        buttonWrapper.innerHTML = `
-          <button class="pay-button" id="payBtn" onclick="processPayment()">
-            <i class="fas fa-lock"></i> ₹${feeString} Abhi Register Karein
-          </button>`;
-      }
-
-      function toggleCheckbox() {
-        let checkbox = document.getElementById("officeVisit");
-        checkbox.checked = !checkbox.checked;
-        calculateFee();
-      }
-
-      async function processPayment() {
-        if (finalFee <= 0) return;
-        
-        // Check karein ki Key ID daali hai ya nahi
-        if (RAZORPAY_KEY_ID === "YAHAN_APNI_KEY_ID_DAALEIN") {
-            alert("Razorpay Key ID missing. Please contact developer.");
-            return;
-        }
-
-        document.getElementById("payBtn").disabled = true;
-        document.getElementById("payBtn").innerText = "Wait...";
-
-        try {
-          // 1. Apne Backend Server se Order ID Maangein
-          const response = await fetch(BACKEND_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              amount: finalFee, // Amount in Rupees
-            }),
-          });
-
-          if (!response.ok) {
-            // Server se error aane par message dikhayein
-            const errorData = await response.json();
-            throw new Error(errorData.message || "Server se order create nahi hua.");
-          }
-
-          const order = await response.json();
-
-          if (!order || !order.id) {
-            throw new Error("Server se galat order ID mili.");
-          }
-
-          // 2. Razorpay ka Checkout Popup Kholein
-          const options = {
-            key: RAZORPAY_KEY_ID, // Aapki Key ID
-            amount: order.amount_in_paise, // Amount in paise (server se aayega)
-            currency: "INR",
-            name: "Kavach Estate",
-            description: "Investor Trust Program Fee",
-            image: "https://www.kavachestate.com/logo.PNG",
-            order_id: order.id, // Server se mila Order ID
-            handler: function (response) {
-              // 3. Payment Successful Hone Par
-              alert(
-                "Payment Successful! Registration ID: " +
-                  response.razorpay_payment_id
-              );
-              window.open(
-                `https://wa.me/919817357179?text=Payment Successful! Maine ₹${(finalFee).toLocaleString("en-IN")} pay kar diye hain. Payment ID: ${response.razorpay_payment_id}`,
-                "_blank"
-              );
-            },
-            prefill: {
-              name: "",
-              email: "",
-              contact: "",
-            },
-            notes: {
-              program: "Investor Trust",
-            },
-            theme: {
-              color: "#0D2F4B",
-            },
-          };
-
-          const rzp = new Razorpay(options);
-          rzp.on("payment.failed", function (response) {
-            alert("Payment Failed: "Dost, payment fail ho gaya: " + response.error.description);
-            calculateFee(); // Button ko wapas reset kar dein
-          });
-
-          rzp.open();
-        } catch (error) {
-          console.error("Payment Error:", error);
-          alert(
-            "Payment shuru karne mein error aa gaya. Server ko check karein ya refresh karke try karein. Error: " + error.message
-          );
-          calculateFee();
-        }
-      }
-
-      // --- Baaki ka original JavaScript (Theme Toggle, etc.) ---
-      document.addEventListener("DOMContentLoaded", function () {
-        const allToggleBtns = document.querySelectorAll(".theme-toggle-btn");
-        const body = document.body;
-        const sunIcons = document.querySelectorAll(".icon-sun");
-        const moonIcons = document.querySelectorAll(".icon-moon");
-
-        function applyTheme(theme) {
-          body.dataset.theme = theme;
-          localStorage.setItem("kavachEstateTheme", theme);
-          if (theme === "light") {
-            sunIcons.forEach((i) => (i.style.display = "none"));
-            moonIcons.forEach((i) => (i.style.display = "inline-block"));
-          } else {
-            sunIcons.forEach((i) => (i.style.display = "inline-block"));
-            moonIcons.forEach((i) => (i.style.display = "none"));
-          }
-        }
-        allToggleBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            let currentTheme = body.dataset.theme;
-            applyTheme(currentTheme === "dark" ? "light" : "dark");
-          });
-        });
-        const savedTheme =
-          localStorage.getItem("kavachEstateTheme") || "dark";
-        applyTheme(savedTheme);
-
-        const sections = document.querySelectorAll(".fade-in-section");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-        sections.forEach((section) => observer.observe(section));
-        calculateFee();
-      });
-    </script>
-  </body>
-</html>
+              class="pay
