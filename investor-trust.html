@@ -8,6 +8,7 @@
       name="description"
       content="Kavach Estate Investor Trust Program. Calculate your 100% refundable trust fee for serious property investment in Sonipat."
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -522,7 +523,7 @@
           <li><a href="index.html#home">Home</a></li>
           <li><a href="index.html#properties">Properties</a></li>
           <li><a href="index.html#about">About Us</a></li>
-          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
           <li>
             <a href="investor-trust.html" style="color: var(--accent-color)"
               >Investor Trust</a
@@ -680,12 +681,14 @@
     <script>
       let finalFee = 0; // Global variable to store the fee
 
-      // <<< --- YAHAN BADLO (Kadam 1 se) --- >>>
+      // <<< --- YAHAN APNI KEY ID DAALO --- >>>
+      // (Yeh aapke Razorpay Dashboard se milegi: rzp_test_... ya rzp_live_...)
       const RAZORPAY_KEY_ID = "YAHAN_APNI_KEY_ID_DAALEIN";
 
-      // <<< --- YAHAN BADLO (Kadam 2C se) --- >>>
-      const BACKEND_URL = "https://kavach-backend.vercel.app/api/create-order"; // Yahaan Vercel se mila URL daalein
+      // <<< --- YAHAN AAPKA NAYA VERCEL URL DAAL DIYA GAYA HAI --- >>>
+      const BACKEND_URL = "https://investor-trust-backend-1.vercel.app/api/create-order";
 
+      
       function calculateFee() {
         let budgetInput = document.getElementById("budget");
         let isOfficeVisit = document.getElementById("officeVisit").checked;
@@ -743,6 +746,13 @@
 
       async function processPayment() {
         if (finalFee <= 0) return;
+        
+        // Check karein ki Key ID daali hai ya nahi
+        if (RAZORPAY_KEY_ID === "YAHAN_APNI_KEY_ID_DAALEIN") {
+            alert("Razorpay Key ID missing. Please contact developer.");
+            return;
+        }
+
         document.getElementById("payBtn").disabled = true;
         document.getElementById("payBtn").innerText = "Wait...";
 
@@ -811,7 +821,7 @@
         } catch (error) {
           console.error("Payment Error:", error);
           alert(
-            "Payment shuru karne mein error aa gaya. Please refresh karke try karein."
+            "Payment shuru karne mein error aa gaya. Server ko check karein ya refresh karke try karein."
           );
           calculateFee();
         }
