@@ -8,7 +8,6 @@
       name="description"
       content="Kavach Estate Investor Trust Program. Calculate your 100% refundable trust fee for serious property investment in Sonipat."
     />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -628,7 +627,6 @@
             <ul>
               <li><a href="index.html#home">Home</a></li>
               <li><a href="index.html#properties">Properties</a></li>
-               <li><a href="/investor-trust.html">Investor Trust</a></li>
               <li><a href="index.html#about">About Us</a></li>
               <li><a href="investor-trust.html">Investor Trust Program</a></li>
             </ul>
@@ -685,8 +683,8 @@
       // <<< --- AAPKI KEY ID YAHAN ADD KAR DI GAYI HAI --- >>>
       const RAZORPAY_KEY_ID = "rzp_live_DTTe9Wy66L5DbW";
 
-      // <<< --- AAPKA VERCEL URL YAHAN ADD KAR DIYA GAYA HAI --- >>>
-      const BACKEND_URL = "https://investor-trust-backend-1.vercel.app/api/create-order";
+      // <<< --- AAPKA VERCEL URL UPDATE KAR DIYA GAYA HAI --- >>>
+      const BACKEND_URL = "https://investor-trust-backend.vercel.app/api/create-order";
 
       
       function calculateFee() {
@@ -815,7 +813,7 @@
 
           const rzp = new Razorpay(options);
           rzp.on("payment.failed", function (response) {
-            alert("Payment Failed: " + response.error.description);
+            alert("Payment Failed: "Dost, payment fail ho gaya: " + response.error.description);
             calculateFee(); // Button ko wapas reset kar dein
           });
 
