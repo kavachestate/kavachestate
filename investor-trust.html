@@ -681,11 +681,10 @@
     <script>
       let finalFee = 0; // Global variable to store the fee
 
-      // <<< --- YAHAN APNI KEY ID DAALO --- >>>
-      // (Yeh aapke Razorpay Dashboard se milegi: rzp_test_... ya rzp_live_...)
-      const RAZORPAY_KEY_ID = "YAHAN_APNI_KEY_ID_DAALEIN";
+      // <<< --- AAPKI KEY ID YAHAN ADD KAR DI GAYI HAI --- >>>
+      const RAZORPAY_KEY_ID = "rzp_live_DTTe9Wy66L5DbW";
 
-      // <<< --- YAHAN AAPKA NAYA VERCEL URL DAAL DIYA GAYA HAI --- >>>
+      // <<< --- AAPKA VERCEL URL YAHAN ADD KAR DIYA GAYA HAI --- >>>
       const BACKEND_URL = "https://investor-trust-backend-1.vercel.app/api/create-order";
 
       
@@ -769,7 +768,9 @@
           });
 
           if (!response.ok) {
-            throw new Error("Server se order create nahi hua.");
+            // Server se error aane par message dikhayein
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Server se order create nahi hua.");
           }
 
           const order = await response.json();
@@ -794,7 +795,7 @@
                   response.razorpay_payment_id
               );
               window.open(
-                `https://wa.me/919817357179?text=Payment Successful! Maine ₹${finalFee} pay kar diye hain. Payment ID: ${response.razorpay_payment_id}`,
+                `https://wa.me/919817357179?text=Payment Successful! Maine ₹${(finalFee).toLocaleString("en-IN")} pay kar diye hain. Payment ID: ${response.razorpay_payment_id}`,
                 "_blank"
               );
             },
@@ -821,7 +822,7 @@
         } catch (error) {
           console.error("Payment Error:", error);
           alert(
-            "Payment shuru karne mein error aa gaya. Server ko check karein ya refresh karke try karein."
+            "Payment shuru karne mein error aa gaya. Server ko check karein ya refresh karke try karein. Error: " + error.message
           );
           calculateFee();
         }
